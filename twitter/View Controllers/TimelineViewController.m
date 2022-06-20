@@ -12,7 +12,7 @@
 #import "LoginViewController.h"
 
 @interface TimelineViewController ()
-
+@property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 @end
 
 @implementation TimelineViewController
@@ -31,6 +31,7 @@
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        self.arrayOfTweets = tweets;
     }];
 }
 
