@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SDC-84-WhI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c3O-zL-0ZQ">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="uh1-EZ-BZD">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="c3O-zL-0ZQ" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController id="c3O-zL-0ZQ" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1iA-jg-j9U"/>
                         <viewControllerLayoutGuide type="bottom" id="Uya-in-Ply"/>
@@ -48,32 +48,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="G4f-Qz-nLX"/>
                     <connections>
-                        <segue destination="0px-Wv-wc8" kind="show" identifier="loginSegue" id="Qkz-NI-apo"/>
+                        <segue destination="Lbl-k5-U4i" kind="show" identifier="loginSegue" id="ZLf-EY-a62"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKJ-HH-8tn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="36"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="txN-TH-dD4">
-            <objects>
-                <tabBarController id="0px-Wv-wc8" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="BJx-OM-JJY"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aOH-wt-9WE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="FTQ-G1-N2b" kind="relationship" relationship="viewControllers" id="Qgp-DS-GPL"/>
-                        <segue destination="1W6-da-7pK" kind="relationship" relationship="viewControllers" id="MEc-ez-fRE"/>
-                        <segue destination="SoS-iX-ZGb" kind="relationship" relationship="viewControllers" id="p3b-fA-EQY"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5i3-Ps-hgg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1305" y="36"/>
+            <point key="canvasLocation" x="-207" y="36"/>
         </scene>
         <!--Home Timeline-->
         <scene sceneID="1Tv-nE-1AW">
@@ -98,7 +78,19 @@
                         <viewLayoutGuide key="safeArea" id="ugE-Ul-H9I"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE"/>
+                    <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
+                        <barButtonItem key="leftBarButtonItem" id="90m-Qc-JoZ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="MIQ-2h-XwB">
+                                <rect key="frame" x="16" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&lt; Logout"/>
+                                <connections>
+                                    <action selector="didTapLogout:" destination="Lbl-k5-U4i" eventType="touchUpInside" id="L1g-E7-v6Z"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,13 +144,20 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHS-35-jFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Feg-7W-gCl">
+                    <rect key="frame" x="0.0" y="0.0" width="67" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                </button>
             </objects>
             <point key="canvasLocation" x="932" y="768"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PN6-0w-uLY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SDC-84-WhI" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xUf-oq-n5h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="LoginViewController" automaticallyAdjustsScrollViewInsets="NO" id="SDC-84-WhI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kjA-M6-kDp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -169,7 +168,6 @@
                         <segue destination="c3O-zL-0ZQ" kind="relationship" relationship="rootViewController" id="MuO-Rf-bXD"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xUf-oq-n5h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1034" y="36"/>
         </scene>
@@ -212,6 +210,9 @@
             <point key="canvasLocation" x="3646" y="768"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZLf-EY-a62"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
         <systemColor name="systemBackgroundColor">
