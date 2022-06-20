@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		1397EA94AE1DE5F26C1724FD /* Pods-twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.release.xcconfig"; sourceTree = "<group>"; };
 		43D6142D6F34C1AE98EE4951 /* libPods-twitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-twitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AD278D520BC4B950085BC29 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AD278D520BC4B950085BC29 /* BirbNoise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirbNoise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD278D820BC4B950085BC29 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6AD278D920BC4B950085BC29 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6AD278DF20BC4B950085BC29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		6AD278D620BC4B950085BC29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6AD278D520BC4B950085BC29 /* twitter.app */,
+				6AD278D520BC4B950085BC29 /* BirbNoise.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6AD278D420BC4B950085BC29 /* twitter */ = {
+		6AD278D420BC4B950085BC29 /* BirbNoise */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6AD278EB20BC4B970085BC29 /* Build configuration list for PBXNativeTarget "twitter" */;
+			buildConfigurationList = 6AD278EB20BC4B970085BC29 /* Build configuration list for PBXNativeTarget "BirbNoise" */;
 			buildPhases = (
 				2753FB299E6FD685DF7178D7 /* [CP] Check Pods Manifest.lock */,
 				6AD278D120BC4B950085BC29 /* Sources */,
@@ -161,9 +161,9 @@
 			);
 			dependencies = (
 			);
-			name = twitter;
+			name = BirbNoise;
 			productName = twitter;
-			productReference = 6AD278D520BC4B950085BC29 /* twitter.app */;
+			productReference = 6AD278D520BC4B950085BC29 /* BirbNoise.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -180,7 +180,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6AD278D020BC4B950085BC29 /* Build configuration list for PBXProject "twitter" */;
+			buildConfigurationList = 6AD278D020BC4B950085BC29 /* Build configuration list for PBXProject "BirbNoise" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -193,7 +193,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6AD278D420BC4B950085BC29 /* twitter */,
+				6AD278D420BC4B950085BC29 /* BirbNoise */,
 			);
 		};
 /* End PBXProject section */
@@ -418,7 +418,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6AD278D020BC4B950085BC29 /* Build configuration list for PBXProject "twitter" */ = {
+		6AD278D020BC4B950085BC29 /* Build configuration list for PBXProject "BirbNoise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6AD278E920BC4B970085BC29 /* Debug */,
@@ -427,7 +427,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6AD278EB20BC4B970085BC29 /* Build configuration list for PBXNativeTarget "twitter" */ = {
+		6AD278EB20BC4B970085BC29 /* Build configuration list for PBXNativeTarget "BirbNoise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6AD278EC20BC4B970085BC29 /* Debug */,
