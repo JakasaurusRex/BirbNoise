@@ -48,7 +48,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="G4f-Qz-nLX"/>
                     <connections>
-                        <segue destination="0px-Wv-wc8" kind="show" id="Qkz-NI-apo"/>
+                        <segue destination="0px-Wv-wc8" kind="show" identifier="loginSegue" id="Qkz-NI-apo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKJ-HH-8tn" sceneMemberID="firstResponder"/>
