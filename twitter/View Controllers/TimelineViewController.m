@@ -29,6 +29,12 @@
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    //Pull to refresh
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
+    
+    
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -92,6 +98,24 @@
     return [self.arrayOfTweets count];
 }
 
+//refresh control method
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+
+        // Create NSURL and NSURLRequest
+
+        [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+            if (tweets) {
+                NSLog(@"😎😎😎 Successfully loaded home timeline");
+                self.arrayOfTweets = tweets;
+                [self.tableView reloadData];
+                [refreshControl endRefreshing];
+            } else {
+                NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+                [refreshControl endRefreshing];
+            }
+        }];
+
+}
 /*
 #pragma mark - Navigation
 
