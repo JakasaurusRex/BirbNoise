@@ -71,7 +71,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="148" id="ysJ-aG-dUR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="148" id="ysJ-aG-dUR" customClass="TweetViewCell">
                                         <rect key="frame" x="0.0" y="44.5" width="375" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ysJ-aG-dUR" id="ok6-y8-RYr">
@@ -200,6 +200,20 @@
                                                 <constraint firstItem="d25-od-gfr" firstAttribute="top" secondItem="5s5-DY-TXg" secondAttribute="bottom" constant="12" id="zVX-ZE-8Um"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="likeIcon" destination="bLO-Dy-Ea9" id="0D5-HR-mWe"/>
+                                            <outlet property="likeText" destination="3GA-Kz-dt5" id="jmq-Qz-rog"/>
+                                            <outlet property="msgIcon" destination="GR1-oV-Zoh" id="arX-Ax-dIL"/>
+                                            <outlet property="replyIcon" destination="d25-od-gfr" id="aCl-W5-Gyj"/>
+                                            <outlet property="replyText" destination="mBa-KS-Zqa" id="Hm6-3i-eDn"/>
+                                            <outlet property="retweetIcon" destination="0f2-Rc-aqu" id="nJe-V8-uOC"/>
+                                            <outlet property="retweetText" destination="FF3-nc-nbC" id="7Il-RJ-G4S"/>
+                                            <outlet property="tweetText" destination="5s5-DY-TXg" id="bZW-uU-fis"/>
+                                            <outlet property="tweetUser" destination="ccE-yB-hHq" id="Ppb-Dq-IYS"/>
+                                            <outlet property="userPFP" destination="1Qz-af-0R8" id="gZI-Dt-HcH"/>
+                                            <outlet property="usernameDateText" destination="yk9-pp-O0c" id="5eh-Yq-Qg2"/>
+                                            <outlet property="verifiedPic" destination="1Qz-af-0R8" id="Q3L-dt-V1F"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -226,6 +240,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="nXF-Qu-F1Z" id="PAD-7b-qYg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -266,6 +283,13 @@
         <!--Home-->
         <scene sceneID="WUT-Ke-VeR">
             <objects>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Feg-7W-gCl">
+                    <rect key="frame" x="0.0" y="0.0" width="67" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                </button>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JHS-35-jFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FTQ-G1-N2b" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="BDB-X0-itG"/>
                     <toolbarItems/>
@@ -278,13 +302,6 @@
                         <segue destination="Lbl-k5-U4i" kind="relationship" relationship="rootViewController" id="1DH-bv-mXM"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JHS-35-jFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Feg-7W-gCl">
-                    <rect key="frame" x="0.0" y="0.0" width="67" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                </button>
             </objects>
             <point key="canvasLocation" x="932" y="768"/>
         </scene>
@@ -346,7 +363,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1DH-bv-mXM"/>
+        <segue reference="ZLf-EY-a62"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>

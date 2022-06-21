@@ -13,7 +13,7 @@
 static NSString * const baseURLString = @"https://api.twitter.com";
 
 @interface APIManager()
-
+@property (nonatomic, strong) NSMutableArray *tweets;
 @end
 
 @implementation APIManager
@@ -39,6 +39,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     NSString *key = [dict objectForKey: @"consumer_Key"];
     NSString *secret = [dict objectForKey: @"consumer_Secret"];
     
+    self.tweets = [[NSMutableArray alloc] init];
     // Check for launch arguments override
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-key"]) {
         key = [[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-key"];
@@ -55,12 +56,13 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
-    
     [self GET:@"1.1/statuses/home_timeline.json"
        parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
            // Success
-           NSMutableArray *tweets = [Tweet tweetsWithArray:tweetDictionaries];
-           completion(tweets, nil);
+          
+          self.tweets = [Tweet tweetsWithArray:tweetDictionaries];
+        NSLog(@"%@", self.tweets);
+          completion(self.tweets, nil);
        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            // There was a problem
            completion(nil, error);

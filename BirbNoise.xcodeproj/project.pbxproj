@@ -19,6 +19,7 @@
 		6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2790820BCC04D0085BC29 /* TimelineViewController.m */; };
 		8458671228612FDD00D6ACB4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458671128612FDD00D6ACB4 /* User.m */; };
 		84586715286132C700D6ACB4 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 84586714286132C700D6ACB4 /* Tweet.m */; };
+		845867182862268500D6ACB4 /* TweetViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845867172862268500D6ACB4 /* TweetViewCell.m */; };
 		8467C59028611D2C009CDBE6 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8467C58F28611D2C009CDBE6 /* Keys.plist */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,8 @@
 		8458671128612FDD00D6ACB4 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		84586713286132C700D6ACB4 /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		84586714286132C700D6ACB4 /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		845867162862268500D6ACB4 /* TweetViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetViewCell.h; sourceTree = "<group>"; };
+		845867172862268500D6ACB4 /* TweetViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetViewCell.m; sourceTree = "<group>"; };
 		8467C58F28611D2C009CDBE6 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +134,8 @@
 		6AD278FF20BCBF280085BC29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				845867162862268500D6ACB4 /* TweetViewCell.h */,
+				845867172862268500D6ACB4 /* TweetViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
+				845867182862268500D6ACB4 /* TweetViewCell.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

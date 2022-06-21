@@ -10,9 +10,13 @@
 #import "APIManager.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "Tweet.h"
+#import "User.h"
+#import "TweetViewCell.h"
 
-@interface TimelineViewController ()
-@property (nonatomic, strong) NSMutableArray *arrayOfTweets;
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *arrayOfTweets;
 @end
 
 @implementation TimelineViewController
@@ -20,18 +24,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
-                NSLog(@"%@", text);
-            }
+            self.arrayOfTweets = tweets;
+            [self.tableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
-        self.arrayOfTweets = tweets;
     }];
 }
 
@@ -51,6 +55,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//Table View Functions
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+// If there are no cells available for reuse, it will always return a cell so long as the identifier has previously been registered
+    TweetViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
+    
+    //assigning the text in the cell to the information stored in the tweet
+    Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    cell.tweetText.text = tweet.text;
+    User *user = tweet.user;
+    cell.tweetUser.text = user.screenName;
+    cell.retweetText.text = [tweet.retweetCount stringValue];
+    cell.likeText.text = [tweet.favoriteCount stringValue];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.arrayOfTweets count];
 }
 
 /*
