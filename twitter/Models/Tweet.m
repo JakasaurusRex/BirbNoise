@@ -36,18 +36,33 @@
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
 
+        //Creating time tweeted ago part of tweet
         // Format createdAt date string
         NSString *createdAtOriginalString = dictionary[@"created_at"];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         // Configure the input format to parse the date string
         formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-        // Convert String to Date
-        NSDate *date = [formatter dateFromString:createdAtOriginalString];
-        // Configure output format
-        formatter.dateStyle = NSDateFormatterShortStyle;
-        formatter.timeStyle = NSDateFormatterNoStyle;
-        // Convert Date to String
-        self.createdAtString = [formatter stringFromDate:date];
+
+        //Creating a time interval object with the difference between the current time and time the tweet was posted
+        NSDate *tweetDate = [formatter dateFromString:createdAtOriginalString];
+        NSDate *curDate = [NSDate date];
+        NSTimeInterval diff = [curDate timeIntervalSinceDate:tweetDate];
+        
+        //format the createdstring based on if it was tweeted an hour or more ago or a minute or more ago
+        NSInteger interval = diff;
+        long seconds = interval % 60;
+        long minutes = (interval / 60) % 60;
+        long hours = (interval / 3600);
+        if(hours > 1) {
+            self.createdAtString = [NSString stringWithFormat:@"%ldh", hours];
+        } else if(minutes > 1) {
+            self.createdAtString = [NSString stringWithFormat:@"%ldm", minutes];
+        } else {
+            self.createdAtString = [NSString stringWithFormat:@"%lds", seconds];
+        }
+        
+        
+        //self.createdAtString=
     }
     return self;
 }

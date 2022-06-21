@@ -61,7 +61,6 @@ static NSString * const baseURLString = @"https://api.twitter.com";
            // Success
           
           self.tweets = [Tweet tweetsWithArray:tweetDictionaries];
-        NSLog(@"%@", self.tweets);
           completion(self.tweets, nil);
        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            // There was a problem

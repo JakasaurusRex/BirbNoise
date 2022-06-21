@@ -66,9 +66,22 @@
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
     cell.tweetText.text = tweet.text;
     User *user = tweet.user;
-    cell.tweetUser.text = user.screenName;
-    cell.retweetText.text = [tweet.retweetCount stringValue];
-    cell.likeText.text = [tweet.favoriteCount stringValue];
+    cell.tweetUser.text = user.name;
+    cell.retweetText.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    cell.likeText.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    cell.usernameDateText.text = [@"@" stringByAppendingString:[user.screenName stringByAppendingString:[@" · " stringByAppendingString:tweet.createdAtString]]];
+    
+    if(!user.verified) {
+        cell.verifiedPic.alpha = 0;
+    }
+    
+    NSString *URLString = tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    
+    cell.userPFP.image = nil;
+    cell.userPFP.image = [UIImage imageWithData:urlData];
+    
     
     return cell;
 }
