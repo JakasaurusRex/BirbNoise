@@ -90,7 +90,7 @@
     cell.userPFP.image = nil;
     cell.userPFP.image = [UIImage imageWithData:urlData];
     
-    cell.userPFP.layer.borderWidth = 1.0;
+    //rounded corners for pfps
     cell.userPFP.layer.masksToBounds = false;
     cell.userPFP.layer.cornerRadius = cell.userPFP.frame.size.width/2;
     cell.userPFP.clipsToBounds = true;
