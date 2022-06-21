@@ -82,6 +82,13 @@
     if(!user.verified) {
         cell.verifiedPic.alpha = 0;
     }
+    //if the user liked or retweeted change the icon to respect that
+    if(tweet.favorited) {
+        cell.likeIcon.image = [UIImage imageNamed:@"favor-icon-red"];
+    }
+    if(tweet.retweeted) {
+        cell.retweetIcon.image = [UIImage imageNamed:@"retweet-icon-green"];
+    }
     
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
