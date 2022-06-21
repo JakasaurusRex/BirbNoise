@@ -47,6 +47,7 @@
     }];
 }
 
+//Logout method
 - (IBAction)didTapLogout:(id)sender {
     // TimelineViewController.m
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -58,7 +59,6 @@
     //Clears access tokens
     [[APIManager shared] logout];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -90,12 +90,24 @@
     cell.userPFP.image = nil;
     cell.userPFP.image = [UIImage imageWithData:urlData];
     
+    cell.userPFP.layer.borderWidth = 1.0;
+    cell.userPFP.layer.masksToBounds = false;
+    cell.userPFP.layer.cornerRadius = cell.userPFP.frame.size.width/2;
+    cell.userPFP.clipsToBounds = true;
+    
     
     return cell;
 }
 
+//returns the amount of rows in the tableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.arrayOfTweets count];
+}
+
+//Deselcting cell after it is clicked on
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 //refresh control method
