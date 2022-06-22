@@ -44,6 +44,43 @@
      }];
 }
 
+- (IBAction)didTapRetweet:(id)sender {
+    // TODO: Update the local tweet model
+    Tweet *tweet = self.tweet;
+    if(self.tweet.retweeted == NO) {
+        NSLog(@"%@", tweet);
+        self.tweet.retweeted = YES;
+        self.tweet.retweetCount += 1;
+        // TODO: Update cell UI
+        [self updateLabels];
+        // TODO: Send a POST request to the POST favorites/create endpoint
+        NSLog(@"%@", self);
+        [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+             }
+         }];
+    } else {
+        self.tweet.retweeted = NO;
+        self.tweet.retweetCount -= 1;
+        // TODO: Update cell UI
+        [self updateLabels];
+        // TODO: Send a POST request to the POST favorites/create endpoint
+        NSLog(@"%@", self);
+        [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unretweeting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+             }
+         }];
+    }
+}
+
 
 
 
@@ -53,9 +90,13 @@
     
     if(self.tweet.favorited) {
         self.likeIcon.image = [UIImage imageNamed:@"favor-icon-red"];
+    } else {
+        self.likeIcon.image = [UIImage imageNamed:@"favor-icon"];
     }
     if(self.tweet.retweeted) {
         self.retweetIcon.image = [UIImage imageNamed:@"retweet-icon-green"];
+    } else {
+        self.retweetIcon.image = [UIImage imageNamed:@"retweet-icon"];
     }
 }
 

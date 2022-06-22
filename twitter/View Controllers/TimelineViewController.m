@@ -105,11 +105,10 @@
     cell.userPFP.layer.cornerRadius = cell.userPFP.frame.size.width/2;
     cell.userPFP.clipsToBounds = true;
     
-    cell.likeIcon.userInteractionEnabled = YES;
-    cell.likeIcon.tag = indexPath.row;
 
     [cell.likeBtn setTitle:@"" forState:UIControlStateNormal];
 
+    [cell.retweetButton setTitle:@"" forState:UIControlStateNormal];
     
     return cell;
 }
