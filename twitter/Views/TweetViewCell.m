@@ -25,30 +25,45 @@
 
 //to check if the user just liked a tweet
 - (IBAction)didTapFavorite:(id)sender {
-    // TODO: Update the local tweet model
-    Tweet *tweet = self.tweet;
-    NSLog(@"%@", tweet);
-    self.tweet.favorited = YES;
-    self.tweet.favoriteCount += 1;
-    // TODO: Update cell UI
-    [self updateLabels];
-    // TODO: Send a POST request to the POST favorites/create endpoint
-    NSLog(@"%@", self);
-    [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
-         if(error){
-              NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
-         }
-         else{
-             NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-         }
-     }];
+    if(self.tweet.favorited == NO) {
+        // TODO: Update the local tweet model
+        NSLog(@"%@", self.tweet);
+        self.tweet.favorited = YES;
+        self.tweet.favoriteCount += 1;
+        // TODO: Update cell UI
+        [self updateLabels];
+        // TODO: Send a POST request to the POST favorites/create endpoint
+        NSLog(@"%@", self);
+        [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+             }
+         }];
+    } else {
+        self.tweet.favorited = NO;
+        self.tweet.favoriteCount -= 1;
+        // TODO: Update cell UI
+        [self updateLabels];
+        // TODO: Send a POST request to the POST favorites/create endpoint
+        NSLog(@"%@", self);
+        [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+             }
+         }];
+    }
 }
 
 - (IBAction)didTapRetweet:(id)sender {
     // TODO: Update the local tweet model
-    Tweet *tweet = self.tweet;
     if(self.tweet.retweeted == NO) {
-        NSLog(@"%@", tweet);
+        NSLog(@"%@", self.tweet);
         self.tweet.retweeted = YES;
         self.tweet.retweetCount += 1;
         // TODO: Update cell UI
