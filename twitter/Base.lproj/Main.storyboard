@@ -55,6 +55,71 @@
             </objects>
             <point key="canvasLocation" x="-207" y="36"/>
         </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="x09-oB-NnN">
+            <objects>
+                <viewController id="x95-r4-58W" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nQf-bt-OaV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDc-bb-8am">
+                                <rect key="frame" x="16" y="61" width="38" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" text="What's happening?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="W0S-SK-WqE">
+                                <rect key="frame" x="62" y="61" width="270" height="155"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" white="0.43172712703962696" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pfK-0G-pCr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NN2-0n-cbM">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="k1Q-ie-hoh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="j1A-H6-NXP">
+                                <rect key="frame" x="16" y="5" width="83" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.34734666375291368" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <action selector="onCancel:" destination="x95-r4-58W" eventType="touchUpInside" id="dRb-Xv-4yu"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="onCancel:" destination="x95-r4-58W" id="KdR-d5-Vre"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Bp8-Th-QWk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="3T5-vD-HLa">
+                                <rect key="frame" x="283" y="5.5" width="76" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.72976987779377489" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Tweet" cornerStyle="medium" buttonSize="small">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="19"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onTweet:" destination="x95-r4-58W" eventType="touchUpInside" id="UrZ-gZ-Ncm"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="k1Q-ie-hoh" id="doD-8i-EqT"/>
+                        <outlet property="textView" destination="W0S-SK-WqE" id="PUX-Kr-5xE"/>
+                        <outlet property="tweetButton" destination="3T5-vD-HLa" id="Md1-ky-oZa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XXU-dR-JNt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-714.39999999999998" y="1459.52023988006"/>
+        </scene>
         <!--Timeline-->
         <scene sceneID="1Tv-nE-1AW">
             <objects>
@@ -265,6 +330,18 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="k9N-as-lwX">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="adG-mU-lWV">
+                                <rect key="frame" x="305" y="3.5" width="54" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="edit-icon" title=" " buttonSize="mini"/>
+                                <connections>
+                                    <segue destination="o4c-9j-DwR" kind="presentation" modalPresentationStyle="fullScreen" id="4rT-xu-bQM"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nXF-Qu-F1Z" id="PAD-7b-qYg"/>
@@ -272,7 +349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="1460.4197901049477"/>
+            <point key="canvasLocation" x="1871.2" y="1460.4197901049477"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="EH6-BF-w4F">
@@ -288,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcw-ec-o4l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2257" y="1460"/>
+            <point key="canvasLocation" x="3196" y="1459.52023988006"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="LZR-hz-9XX">
@@ -304,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pL4-Ng-Q8E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3646" y="1460"/>
+            <point key="canvasLocation" x="4584.8000000000002" y="1459.52023988006"/>
         </scene>
         <!--Home-->
         <scene sceneID="WUT-Ke-VeR">
@@ -387,6 +464,27 @@
             </objects>
             <point key="canvasLocation" x="3646" y="768"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vOa-sU-PPN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o4c-9j-DwR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="k0a-9o-OPX">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="elT-B9-KVC"/>
+                    </navigationItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EYp-R3-6Bx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="x95-r4-58W" kind="relationship" relationship="rootViewController" id="squ-2M-I99"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YG0-nt-rQH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2290.4000000000001" y="1459.52023988006"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ZLf-EY-a62"/>
@@ -394,6 +492,7 @@
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
         <image name="checkmark.seal.fill" catalog="system" width="128" height="128"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>

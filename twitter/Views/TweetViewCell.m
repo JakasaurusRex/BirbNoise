@@ -25,6 +25,7 @@
 
 //to check if the user just liked a tweet
 - (IBAction)didTapFavorite:(id)sender {
+    //if they were not favorited already, like the tweet
     if(self.tweet.favorited == NO) {
         // TODO: Update the local tweet model
         NSLog(@"%@", self.tweet);
@@ -43,6 +44,7 @@
              }
          }];
     } else {
+        //otherwise unlike the tweet
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
         // TODO: Update cell UI
@@ -60,8 +62,10 @@
     }
 }
 
+//check when user clicks the retweet button
 - (IBAction)didTapRetweet:(id)sender {
     // TODO: Update the local tweet model
+    //if the user hadnt retweeted the tweet before
     if(self.tweet.retweeted == NO) {
         NSLog(@"%@", self.tweet);
         self.tweet.retweeted = YES;
@@ -79,6 +83,7 @@
              }
          }];
     } else {
+        //if the user had already retweeted the tweet
         self.tweet.retweeted = NO;
         self.tweet.retweetCount -= 1;
         // TODO: Update cell UI
@@ -98,7 +103,7 @@
 
 
 
-
+//function to update the labels depending upon the statuses of the variables
 - (void) updateLabels{
     self.likeText.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     self.retweetText.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
