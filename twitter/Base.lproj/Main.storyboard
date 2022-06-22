@@ -301,7 +301,7 @@
                                             <outlet property="retweetText" destination="FF3-nc-nbC" id="7Il-RJ-G4S"/>
                                             <outlet property="tweetText" destination="5s5-DY-TXg" id="bZW-uU-fis"/>
                                             <outlet property="tweetUser" destination="ccE-yB-hHq" id="Ppb-Dq-IYS"/>
-                                            <outlet property="userPFP" destination="1Qz-af-0R8" id="gZI-Dt-HcH"/>
+                                            <outlet property="userPFP" destination="ljD-5Q-8Rt" id="dvD-PC-cg1"/>
                                             <outlet property="usernameDateText" destination="yk9-pp-O0c" id="5eh-Yq-Qg2"/>
                                             <outlet property="verifiedPic" destination="1Qz-af-0R8" id="Q3L-dt-V1F"/>
                                             <segue destination="ULt-A5-5GC" kind="presentation" identifier="detailSegue" modalPresentationStyle="fullScreen" id="OQM-vc-t7j"/>
