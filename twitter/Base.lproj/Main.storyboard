@@ -63,7 +63,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDc-bb-8am">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDc-bb-8am" userLabel="Profile Image">
                                 <rect key="frame" x="16" y="61" width="38" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -304,6 +304,7 @@
                                             <outlet property="userPFP" destination="1Qz-af-0R8" id="gZI-Dt-HcH"/>
                                             <outlet property="usernameDateText" destination="yk9-pp-O0c" id="5eh-Yq-Qg2"/>
                                             <outlet property="verifiedPic" destination="1Qz-af-0R8" id="Q3L-dt-V1F"/>
+                                            <segue destination="ULt-A5-5GC" kind="presentation" identifier="detailSegue" modalPresentationStyle="fullScreen" id="OQM-vc-t7j"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -338,7 +339,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="edit-icon" title=" " buttonSize="mini"/>
                                 <connections>
-                                    <segue destination="o4c-9j-DwR" kind="presentation" modalPresentationStyle="fullScreen" id="4rT-xu-bQM"/>
+                                    <segue destination="o4c-9j-DwR" kind="presentation" identifier="composeSegue" modalPresentationStyle="fullScreen" id="4rT-xu-bQM"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -350,6 +351,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1871.2" y="1460.4197901049477"/>
+        </scene>
+        <!--Tweet-->
+        <scene sceneID="kBa-yD-lUp">
+            <objects>
+                <viewController id="ocg-Ll-RUm" customClass="TweetDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gR9-fg-qlC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PrF-UE-3kU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tweet" id="pqo-JO-SMA">
+                        <barButtonItem key="leftBarButtonItem" image="back-icon" id="6e0-Lw-wG2">
+                            <connections>
+                                <action selector="pressedBack:" destination="ocg-Ll-RUm" id="xaf-hC-eZK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backButton" destination="6e0-Lw-wG2" id="c2H-Pf-Nh2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V9V-El-1qz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1871" y="2375"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="EH6-BF-w4F">
@@ -485,12 +511,32 @@
             </objects>
             <point key="canvasLocation" x="-2290.4000000000001" y="1459.52023988006"/>
         </scene>
+        <!--TweetDetailNavController-->
+        <scene sceneID="CAg-H5-TFF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ULt-A5-5GC" userLabel="TweetDetailNavController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="BZe-xs-xr2"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VTR-lb-Sql">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ocg-Ll-RUm" kind="relationship" relationship="rootViewController" id="Lh9-pS-kkW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsx-T4-3nH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="500" y="2376"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ZLf-EY-a62"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="back-icon" width="30" height="30"/>
         <image name="checkmark.seal.fill" catalog="system" width="128" height="128"/>
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
