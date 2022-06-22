@@ -106,6 +106,7 @@
     cell.userPFP.layer.masksToBounds = false;
     cell.userPFP.layer.cornerRadius = cell.userPFP.frame.size.width/2;
     cell.userPFP.clipsToBounds = true;
+    cell.userPFP.layer.borderWidth = 0.1;
     
 
     [cell.likeBtn setTitle:@"" forState:UIControlStateNormal];

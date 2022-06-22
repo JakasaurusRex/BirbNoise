@@ -51,7 +51,7 @@
     self.profileIcon.layer.masksToBounds = false;
     self.profileIcon.layer.cornerRadius = self.profileIcon.frame.size.width/2;
     self.profileIcon.clipsToBounds = true;
-    
+    self.profileIcon.layer.borderWidth = 0.1;
 
     [self.likeBtn setTitle:@"" forState:UIControlStateNormal];
 
