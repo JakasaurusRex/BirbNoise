@@ -8,6 +8,8 @@
 
 #import "ComposeViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "APIManager.h"
+#import "Tweet.h"
 
 @interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -27,7 +29,16 @@
 
 //When user tweets
 - (IBAction)onTweet:(id)sender {
-    
+    NSLog(@"Attempting to send tweet with text %@", self.textView.text);
+    [[APIManager shared] postStatusWithText:self.textView.text completion:^(Tweet *tweet, NSError *error) {
+         if(error){
+              NSLog(@"Error tweeting: %@", error.localizedDescription);
+         }
+         else{
+             NSLog(@"Successfully tweeted the following Tweet: %@", tweet.text);
+         }
+        [self dismissViewControllerAnimated:true completion:nil];
+     }];
 }
 
 //Dismiss modal
@@ -39,6 +50,7 @@
 - (void) textViewDidBeginEditing:(UITextView *) textView {
   [textView setText:@""];
 }
+
 /*
 #pragma mark - Navigation
 
