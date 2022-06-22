@@ -107,7 +107,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply-icon" translatesAutoresizingMaskIntoConstraints="NO" id="d25-od-gfr">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply-icon" translatesAutoresizingMaskIntoConstraints="NO" id="d25-od-gfr">
                                                     <rect key="frame" x="87" y="126" width="20" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="1j0-Or-oG6"/>
@@ -123,7 +123,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet-icon" translatesAutoresizingMaskIntoConstraints="NO" id="0f2-Rc-aqu">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet-icon" translatesAutoresizingMaskIntoConstraints="NO" id="0f2-Rc-aqu">
                                                     <rect key="frame" x="174.5" y="126" width="20" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="LEr-Wx-IRd"/>
@@ -139,7 +139,7 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="favor-icon" translatesAutoresizingMaskIntoConstraints="NO" id="bLO-Dy-Ea9" userLabel="LikeIcon">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="favor-icon" translatesAutoresizingMaskIntoConstraints="NO" id="bLO-Dy-Ea9" userLabel="LikeIcon">
                                                     <rect key="frame" x="260" y="127" width="20" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="CfT-Zd-Du8"/>
@@ -167,7 +167,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain"/>
                                                     <connections>
-                                                        <action selector="didTapFavorite:" destination="ysJ-aG-dUR" eventType="touchUpInside" id="rXG-sl-kWY"/>
+                                                        <action selector="didTapFavorite:" destination="ysJ-aG-dUR" eventType="touchUpInside" id="hQT-w5-Bwp"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ljD-5Q-8Rt" userLabel="ProfilePic">
@@ -213,7 +213,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="likeBtn" destination="Unn-T5-7DU" id="XQ4-3A-7hT"/>
+                                            <outlet property="likeBtn" destination="Unn-T5-7DU" id="h9K-LT-zrg"/>
                                             <outlet property="likeIcon" destination="bLO-Dy-Ea9" id="0D5-HR-mWe"/>
                                             <outlet property="likeText" destination="3GA-Kz-dt5" id="jmq-Qz-rog"/>
                                             <outlet property="msgIcon" destination="GR1-oV-Zoh" id="arX-Ax-dIL"/>

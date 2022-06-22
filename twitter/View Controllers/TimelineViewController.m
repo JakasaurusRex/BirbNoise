@@ -74,6 +74,7 @@
     
     //assigning the text in the cell to the information stored in the tweet
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    cell.tweet = tweet;
     cell.tweetText.text = tweet.text;
     User *user = tweet.user;
     cell.tweetUser.text = user.name;

@@ -8,6 +8,7 @@
 
 #import "TweetViewCell.h"
 #import "APIManager.h"
+#import "Tweet.h"
 
 @implementation TweetViewCell
 
@@ -25,11 +26,14 @@
 //to check if the user just liked a tweet
 - (IBAction)didTapFavorite:(id)sender {
     // TODO: Update the local tweet model
+    Tweet *tweet = self.tweet;
+    NSLog(@"%@", tweet);
     self.tweet.favorited = YES;
     self.tweet.favoriteCount += 1;
     // TODO: Update cell UI
     [self updateLabels];
     // TODO: Send a POST request to the POST favorites/create endpoint
+    NSLog(@"%@", self);
     [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
          if(error){
               NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
@@ -40,9 +44,19 @@
      }];
 }
 
+
+
+
 - (void) updateLabels{
     self.likeText.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     self.retweetText.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+    
+    if(self.tweet.favorited) {
+        self.likeIcon.image = [UIImage imageNamed:@"favor-icon-red"];
+    }
+    if(self.tweet.retweeted) {
+        self.retweetIcon.image = [UIImage imageNamed:@"retweet-icon-green"];
+    }
 }
 
 @end
