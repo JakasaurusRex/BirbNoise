@@ -23,6 +23,7 @@
     self.tweetText.text = self.tweet.text;
     User *user = self.tweet.user;
     self.name.text = user.name;
+    self.username.text = [@"@" stringByAppendingString:user.screenName];
     self.numRetweets.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     self.numLikes.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     self.timeDotDate.text = [self.tweet.tweetTimeForm stringByAppendingString:[@" · " stringByAppendingString:self.tweet.tweetDateForm]];
