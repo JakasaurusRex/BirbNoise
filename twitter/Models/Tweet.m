@@ -69,7 +69,14 @@
         }
         
         
-        //self.createdAtString=
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeStyle = NSDateFormatterNoStyle;
+        // Convert Date to String
+        self.tweetDateForm = [formatter stringFromDate:tweetDate];
+        
+        formatter.dateStyle = NSDateFormatterNoStyle;
+        formatter.timeStyle = NSDateFormatterShortStyle;
+        self.tweetTimeForm = [formatter stringFromDate:tweetDate];
     }
     return self;
 }

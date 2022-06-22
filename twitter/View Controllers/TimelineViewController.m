@@ -14,6 +14,7 @@
 #import "User.h"
 #import "TweetViewCell.h"
 #import "ComposeViewController.h"
+#import "TweetDetailViewController.h"
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -159,7 +160,11 @@
          ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
          composeController.delegate = self;
      } else if([segue.identifier isEqualToString:@"detailSegue"]) {
-         
+         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+         Tweet *dataToPass = self.arrayOfTweets[indexPath.item];
+         UINavigationController *navCon = [segue destinationViewController];
+         TweetDetailViewController *detailVC = (TweetDetailViewController *)navCon.topViewController;
+         detailVC.tweet = dataToPass;
      }
 }
 
