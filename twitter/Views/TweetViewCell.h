@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *msgIcon;
 @property (weak, nonatomic) IBOutlet UILabel *likeText;
 @property (weak, nonatomic) IBOutlet UIImageView *retweetIcon;
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *retweetText;
 @property (weak, nonatomic) IBOutlet UIImageView *userPFP;
 @end

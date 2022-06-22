@@ -45,6 +45,8 @@
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
+    
+    
 }
 
 //Logout method
@@ -82,7 +84,7 @@
     if(!user.verified) {
         cell.verifiedPic.alpha = 0;
     }
-    //if the user liked or retweeted change the icon to respect that
+    
     if(tweet.favorited) {
         cell.likeIcon.image = [UIImage imageNamed:@"favor-icon-red"];
     }
@@ -102,6 +104,11 @@
     cell.userPFP.layer.cornerRadius = cell.userPFP.frame.size.width/2;
     cell.userPFP.clipsToBounds = true;
     
+    cell.likeIcon.userInteractionEnabled = YES;
+    cell.likeIcon.tag = indexPath.row;
+
+    [cell.likeBtn setTitle:@"" forState:UIControlStateNormal];
+
     
     return cell;
 }
