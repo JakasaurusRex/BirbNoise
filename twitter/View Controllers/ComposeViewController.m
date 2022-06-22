@@ -36,6 +36,7 @@
          }
          else{
              NSLog(@"Successfully tweeted the following Tweet: %@", tweet.text);
+             [self.delegate didTweet:tweet];
          }
         [self dismissViewControllerAnimated:true completion:nil];
      }];
