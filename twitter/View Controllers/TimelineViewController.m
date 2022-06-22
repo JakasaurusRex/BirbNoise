@@ -19,6 +19,7 @@
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *arrayOfTweets;
+@property (nonatomic, strong) NSDictionary *appUserProfile;
 @end
 
 @implementation TimelineViewController
@@ -47,6 +48,32 @@
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
+    
+    [[APIManager shared] getSelfProfile:^(NSDictionary *user, NSError *error) {
+        if(user) {
+            NSLog(@"😎😎😎 Successfully loaded user info");
+            NSLog(@"%@", user);
+            self.appUserProfile = user;
+            NSString *URLString = [self.appUserProfile[@"profile_image_url_https"] stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+            NSURL *url = [NSURL URLWithString:URLString];
+            
+            NSData *urlData = [NSData dataWithContentsOfURL:url];
+            NSLog(@"%@", urlData);
+            [self.barPFP setImage:[UIImage imageWithData:urlData] forState:UIControlStateNormal];
+            [self.barPFP setTitle:@"" forState:UIControlStateNormal];
+            self.barPFP.layer.masksToBounds = false;
+            self.barPFP.layer.cornerRadius = self.barPFP.frame.size.width/2;
+            self.barPFP.clipsToBounds = true;
+            self.barPFP.layer.borderWidth = 0.05;
+        } else {
+            NSLog(@"😫😫😫 Error getting user information: %@", error.localizedDescription);
+        }
+    }];
+    
+    
+    
+    
+    
     
     
 }
@@ -82,7 +109,6 @@
     cell.tweetUser.text = user.name;
     cell.retweetText.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.likeText.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
-    cell.replyText.text = [NSString stringWithFormat:@"%d", tweet.replyCount];
     cell.usernameDateText.text = [@"@" stringByAppendingString:[user.screenName stringByAppendingString:[@" · " stringByAppendingString:tweet.createdAtString]]];
     
     if(!user.verified) {

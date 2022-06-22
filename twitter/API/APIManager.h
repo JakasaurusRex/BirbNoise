@@ -26,4 +26,6 @@
 
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
 
+- (void)getSelfProfile:(void(^)(NSDictionary *user, NSError *error))completion;
+
 @end

@@ -68,6 +68,18 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     }];
 }
 
+//API Call to get your own profile information so profile picture can be displayed in app
+- (void)getSelfProfile:(void(^)(NSDictionary *user, NSError *error))completion {
+    [self GET:@"1.1/account/verify_credentials.json"
+        parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable userDic) {
+           // Success
+          completion(userDic, nil);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           // There was a problem
+           completion(nil, error);
+    }];
+}
+
 - (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
     NSString *urlString = @"1.1/favorites/create.json";
     NSDictionary *parameters = @{@"id": tweet.idStr};
