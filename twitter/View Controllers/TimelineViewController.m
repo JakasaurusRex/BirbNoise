@@ -82,6 +82,7 @@
     cell.tweetUser.text = user.name;
     cell.retweetText.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.likeText.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    cell.replyText.text = [NSString stringWithFormat:@"%d", tweet.replyCount];
     cell.usernameDateText.text = [@"@" stringByAppendingString:[user.screenName stringByAppendingString:[@" · " stringByAppendingString:tweet.createdAtString]]];
     
     if(!user.verified) {
