@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *characterText;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (nonatomic, strong) User *user;
+@property int reply;
+@property (nonatomic, strong) Tweet *tweet;
 @end
 
 

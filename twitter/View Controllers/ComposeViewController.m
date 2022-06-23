@@ -25,21 +25,37 @@
     self.tweetButton.clipsToBounds = YES;
     
     self.textView.delegate = self;
+    if(self.reply == 1) {
+        [self.textView setText:[@"@" stringByAppendingString:[self.tweet.user.screenName stringByAppendingString:@" "]]];
+    }
 }
 
 //When user tweets
 - (IBAction)onTweet:(id)sender {
     NSLog(@"Attempting to send tweet with text %@", self.textView.text);
-    [[APIManager shared] postStatusWithText:self.textView.text completion:^(Tweet *tweet, NSError *error) {
-         if(error){
-              NSLog(@"Error tweeting: %@", error.localizedDescription);
-         }
-         else{
-             NSLog(@"Successfully tweeted the following Tweet: %@", tweet.text);
-             [self.delegate didTweet:tweet];
-         }
-        [self dismissViewControllerAnimated:true completion:nil];
-     }];
+    if(self.reply == 0) {
+        [[APIManager shared] postStatusWithText:self.textView.text completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error tweeting: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully tweeted the following Tweet: %@", tweet.text);
+                 [self.delegate didTweet:tweet];
+             }
+            [self dismissViewControllerAnimated:true completion:nil];
+         }];
+    } else {
+        [[APIManager shared] reply:self.textView.text :self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if(error) {
+                NSLog(@"Error replying: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Successfully tweeted the following Tweet: %@", tweet.text);
+                [self.delegate didTweet:tweet];
+            }
+            [self dismissViewControllerAnimated:true completion:nil];
+        }];
+    }
+    
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
@@ -65,7 +81,11 @@
 }
 
 - (void) textViewDidBeginEditing:(UITextView *) textView {
-  [textView setText:@""];
+    if(self.reply == 0) {
+        [textView setText:@""];
+    } else {
+        [textView setText:[@"@" stringByAppendingString:[self.tweet.user.screenName stringByAppendingString:@" "]]];
+    }
 }
 
 /*

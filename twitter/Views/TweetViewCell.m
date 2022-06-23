@@ -9,6 +9,7 @@
 #import "TweetViewCell.h"
 #import "APIManager.h"
 #import "Tweet.h"
+#import "ComposeViewController.h"
 
 @implementation TweetViewCell
 
@@ -101,6 +102,8 @@
     }
 }
 
+- (IBAction)reply:(id)sender {
+}
 
 
 //function to update the labels depending upon the statuses of the variables
@@ -120,4 +123,8 @@
     }
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+}
 @end

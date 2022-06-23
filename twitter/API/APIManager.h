@@ -28,4 +28,6 @@
 
 - (void)getSelfProfile:(void(^)(NSDictionary *user, NSError *error))completion;
 
+- (void)reply:(NSString *)text:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
+
 @end

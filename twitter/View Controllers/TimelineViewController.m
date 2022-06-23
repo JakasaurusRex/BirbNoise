@@ -140,6 +140,8 @@
 
     [cell.retweetButton setTitle:@"" forState:UIControlStateNormal];
     
+    [cell.replyBtn setTitle:@"" forState:UIControlStateNormal];
+    
     return cell;
 }
 
@@ -186,12 +188,25 @@
          UINavigationController *navigationController = [segue destinationViewController];
          ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
          composeController.delegate = self;
+         composeController.reply = 0;
      } else if([segue.identifier isEqualToString:@"detailSegue"]) {
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          Tweet *dataToPass = self.arrayOfTweets[indexPath.item];
          UINavigationController *navCon = [segue destinationViewController];
          TweetDetailViewController *detailVC = (TweetDetailViewController *)navCon.topViewController;
          detailVC.tweet = dataToPass;
+     } else if([segue.identifier isEqualToString:@"replySegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+         UIView *content = (UIView *)[(UIView *) sender superview];
+         TweetViewCell *cell = (TweetViewCell *)[content superview];
+         
+         NSLog(@"%@", cell.tweet);
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        Tweet *dataToPass = self.arrayOfTweets[indexPath.item];
+        composeController.reply = 1;
+        composeController.tweet = dataToPass;
+        NSLog(@"%@", dataToPass);
      }
 }
 
