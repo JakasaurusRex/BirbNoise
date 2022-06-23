@@ -62,7 +62,7 @@
             [self.barPFP setImage:[UIImage imageWithData:urlData] forState:UIControlStateNormal];
             [self.barPFP setTitle:@"" forState:UIControlStateNormal];
             self.barPFP.layer.masksToBounds = false;
-            self.barPFP.layer.cornerRadius = self.barPFP.frame.size.width/2;
+            self.barPFP.layer.cornerRadius = self.barPFP.bounds.size.width/2;
             self.barPFP.clipsToBounds = true;
             self.barPFP.layer.borderWidth = 0.05;
         } else {
@@ -104,7 +104,7 @@
     //assigning the text in the cell to the information stored in the tweet
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
     cell.tweet = tweet;
-    cell.tweetText.text = tweet.text;
+    [cell.tweetText setText:tweet.text];
     User *user = tweet.user;
     cell.tweetUser.text = user.name;
     cell.retweetText.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];

@@ -19,8 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tweetText.text = self.tweet.text;
+    [self.tweetText setText:self.tweet.text];
     User *user = self.tweet.user;
     self.name.text = user.name;
     self.username.text = [@"@" stringByAppendingString:user.screenName];

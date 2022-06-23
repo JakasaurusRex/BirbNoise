@@ -42,6 +42,22 @@
      }];
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    // Set the max character limit
+    int characterLimit = 140;
+
+    // Construct what the new text would be if we allowed the user's latest edit
+    NSString *newText = [self.textView.text stringByReplacingCharactersInRange:range withString:text];
+
+    // TODO: Update character count label
+    self.characterText.text = [NSString stringWithFormat:@"%lu/140", newText.length];
+    double length = (double) newText.length;
+    self.progressBar.progress = length/140;
+    
+    // Should the new text should be allowed? True/False
+    return newText.length < characterLimit;
+}
+
 //Dismiss modal
 - (IBAction)onCancel:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
