@@ -29,7 +29,6 @@
     //if they were not favorited already, like the tweet
     if(self.tweet.favorited == NO) {
         // TODO: Update the local tweet model
-        NSLog(@"%@", self.tweet);
         self.tweet.favorited = YES;
         self.tweet.favoriteCount += 1;
         // TODO: Update cell UI

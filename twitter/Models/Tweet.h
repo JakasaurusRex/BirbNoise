@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *createdAtString; // Display date
 @property (nonatomic, strong) NSString *tweetDateForm;
 @property (nonatomic, strong) NSString *tweetTimeForm;
+//for embeded images
+@property (nonatomic, strong) NSArray *media;
+@property (nonatomic, strong) NSString *mediaURL;
 //For retweets
 @property (nonatomic, strong) User *retweetedByUser;
 

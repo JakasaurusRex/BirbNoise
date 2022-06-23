@@ -58,6 +58,22 @@
     [self.retweetBtn setTitle:@"" forState:UIControlStateNormal];
     
     [self.replyBtn setTitle:@"" forState:UIControlStateNormal];
+    
+    if(self.tweet.mediaURL ==  nil) {
+        CGRect rect = self.mediaView.frame;
+        rect.size.height = 0;
+        rect.size.height = 0;
+        self.mediaView.frame = rect;
+    } else {
+        NSString *URLString = self.tweet.mediaURL;
+        NSURL *url = [NSURL URLWithString:URLString];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        self.mediaView.image = [UIImage imageWithData:urlData];
+        self.mediaView.layer.cornerRadius = self.mediaView.frame.size.width/12;
+        self.mediaView.clipsToBounds = true;
+        self.mediaView.layer.borderWidth = 0.05;
+        self.mediaView.layer.masksToBounds = true;
+    }
     // Do any additional setup after loading the view.
 }
 - (IBAction)pressedBack:(id)sender {

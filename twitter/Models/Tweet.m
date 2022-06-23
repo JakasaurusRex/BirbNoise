@@ -79,6 +79,17 @@
         formatter.dateStyle = NSDateFormatterNoStyle;
         formatter.timeStyle = NSDateFormatterShortStyle;
         self.tweetTimeForm = [formatter stringFromDate:tweetDate];
+        
+        //checking for media
+        NSDictionary *entities = dictionary[@"entities"];
+        self.media = entities[@"media"];
+        if(self.media) {
+            NSLog(@"This tweet has media!: %@ ", self.text);
+            
+            self.mediaURL = self.media[0][@"media_url_https"];
+            self.mediaURL = [self.mediaURL stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+            NSLog(@"MEDIA: %@", self.mediaURL);
+        }
     }
     return self;
 }
