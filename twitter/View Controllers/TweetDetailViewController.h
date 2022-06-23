@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UIImageView *verifiedCheck;
+@property (weak, nonatomic) IBOutlet UIButton *replyBtn;
 
 @property (nonatomic, strong) Tweet *tweet;
 @end

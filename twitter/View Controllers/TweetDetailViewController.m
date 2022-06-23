@@ -10,6 +10,7 @@
 #import "Tweet.h"
 #import "User.h"
 #import "APIManager.h"
+#import "ComposeViewController.h"
 
 @interface TweetDetailViewController ()
 
@@ -55,11 +56,18 @@
     [self.likeBtn setTitle:@"" forState:UIControlStateNormal];
 
     [self.retweetBtn setTitle:@"" forState:UIControlStateNormal];
+    
+    [self.replyBtn setTitle:@"" forState:UIControlStateNormal];
     // Do any additional setup after loading the view.
 }
 - (IBAction)pressedBack:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
+
+- (IBAction)pressedReply:(id)sender {
+    
+}
+
 - (IBAction)pressedLike:(id)sender {
     //if they were not favorited already, like the tweet
     if(self.tweet.favorited == NO) {
@@ -153,14 +161,19 @@
     }
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+     if([segue.identifier isEqualToString:@"replySegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        Tweet *dataToPass = self.tweet;
+        composeController.reply = 1;
+        composeController.tweet = dataToPass;
+     }
 }
-*/
+
 
 @end

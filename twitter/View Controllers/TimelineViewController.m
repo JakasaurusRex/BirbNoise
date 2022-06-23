@@ -141,7 +141,6 @@
     [cell.retweetButton setTitle:@"" forState:UIControlStateNormal];
     
     [cell.replyBtn setTitle:@"" forState:UIControlStateNormal];
-    
     return cell;
 }
 
@@ -200,13 +199,10 @@
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
          UIView *content = (UIView *)[(UIView *) sender superview];
          TweetViewCell *cell = (TweetViewCell *)[content superview];
-         
-         NSLog(@"%@", cell.tweet);
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         Tweet *dataToPass = self.arrayOfTweets[indexPath.item];
         composeController.reply = 1;
         composeController.tweet = dataToPass;
-        NSLog(@"%@", dataToPass);
      }
 }
 
