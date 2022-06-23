@@ -217,6 +217,7 @@
          ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
          composeController.delegate = self;
          composeController.reply = 0;
+         composeController.user = self.appUserProfile;
      } else if([segue.identifier isEqualToString:@"detailSegue"]) {
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          Tweet *dataToPass = self.arrayOfTweets[indexPath.item];
@@ -232,6 +233,7 @@
         Tweet *dataToPass = self.arrayOfTweets[indexPath.item];
         composeController.reply = 1;
         composeController.tweet = dataToPass;
+        composeController.user = self.appUserProfile;
      }
 }
 

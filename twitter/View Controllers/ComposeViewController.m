@@ -28,6 +28,16 @@
     if(self.reply == 1) {
         [self.textView setText:[@"@" stringByAppendingString:[self.tweet.user.screenName stringByAppendingString:@" "]]];
     }
+    NSString *URLString = [self.user[@"profile_image_url_https"] stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+    NSURL *url = [NSURL URLWithString:URLString];
+    
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    self.userImage.image = [UIImage imageWithData:urlData];
+    self.userImage.layer.masksToBounds = false;
+    self.userImage.layer.cornerRadius = self.userImage.bounds.size.width/2;
+    self.userImage.clipsToBounds = true;
+    self.userImage.contentMode = UIViewContentModeScaleAspectFill;
+    self.userImage.layer.borderWidth = 0.05;
 }
 
 //When user tweets

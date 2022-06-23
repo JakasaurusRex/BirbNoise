@@ -24,8 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<ComposeViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *characterText;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
-@property (nonatomic, strong) User *user;
+@property (nonatomic, strong) NSDictionary *user;
 @property int reply;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (nonatomic, strong) Tweet *tweet;
 @end
 
