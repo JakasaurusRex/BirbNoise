@@ -75,6 +75,7 @@
         self.mediaView.layer.masksToBounds = true;
     }
     // Do any additional setup after loading the view.
+    
 }
 - (IBAction)pressedBack:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];

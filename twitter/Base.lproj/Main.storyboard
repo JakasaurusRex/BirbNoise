@@ -359,27 +359,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="MOc-fV-EZE" userLabel="Timeline">
-                        <leftBarButtonItems>
-                            <barButtonItem id="90m-Qc-JoZ">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="MIQ-2h-XwB">
-                                    <rect key="frame" x="16" y="5" width="92" height="34.5"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="&lt; Logout"/>
-                                    <connections>
-                                        <action selector="didTapLogout:" destination="Lbl-k5-U4i" eventType="touchUpInside" id="L1g-E7-v6Z"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem style="plain" id="7Mh-R7-bXZ">
-                                <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="woR-cf-Xd7">
-                                    <rect key="frame" x="116" y="9.5" width="25" height="25"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain"/>
-                                </button>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="7Mh-R7-bXZ">
+                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="woR-cf-Xd7">
+                                <rect key="frame" x="116" y="9.5" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="k9N-as-lwX">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="adG-mU-lWV">
@@ -704,7 +691,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VXt-zZ-HsE"/>
+        <segue reference="4rT-xu-bQM"/>
         <segue reference="1DH-bv-mXM"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -16,10 +16,11 @@
 #import "ComposeViewController.h"
 #import "TweetDetailViewController.h"
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *arrayOfTweets;
 @property (nonatomic, strong) NSDictionary *appUserProfile;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 @end
 
 @implementation TimelineViewController
@@ -71,12 +72,10 @@
     
     
     
-    
-    
-    
+    [self.tableView reloadData];
     
 }
-
+/* will move to profile view controller when done
 //Logout method
 - (IBAction)didTapLogout:(id)sender {
     // TimelineViewController.m
@@ -89,7 +88,7 @@
     //Clears access tokens
     [[APIManager shared] logout];
 }
-
+*/
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -178,6 +177,36 @@
     self.arrayOfTweets = tweetList;
     [self.tableView reloadData];
 }
+/*
+//Infinite Scroll
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+     // Handle scroll behavior here
+    if(!self.isMoreDataLoading){
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            [self loadMoreData];
+        }
+    }
+}
+
+-(void)loadMoreData{
+    
+      // ... Create the NSURLRequest (myRequest) ...
+    
+    // Configure session so that completion handler is executed on main UI thread
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+   
+    
+    [task resume];
+}*/
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
