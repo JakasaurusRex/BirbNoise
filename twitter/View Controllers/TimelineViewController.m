@@ -38,7 +38,8 @@
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
-    
+    //[self.pfpButton setTitle:@"" forState:UIControlStateNormal];
+    [self.barPFP setTitle:@"" forState:UIControlStateNormal];
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
@@ -60,7 +61,7 @@
             
             NSData *urlData = [NSData dataWithContentsOfURL:url];
             self.navImage.image = [UIImage imageWithData:urlData];
-            [self.barPFP setTitle:@"" forState:UIControlStateNormal];
+            
             self.navImage.layer.masksToBounds = false;
             self.navImage.layer.cornerRadius = self.navImage.bounds.size.width/2;
             self.navImage.clipsToBounds = true;
@@ -143,6 +144,7 @@
     [cell.retweetButton setTitle:@"" forState:UIControlStateNormal];
     
     [cell.replyBtn setTitle:@"" forState:UIControlStateNormal];
+    [cell.pfpBtn setTitle:@"" forState:UIControlStateNormal];
     return cell;
 }
 

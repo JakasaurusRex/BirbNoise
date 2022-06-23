@@ -9,13 +9,20 @@
 #import "ProfileViewController.h"
 
 @interface ProfileViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @end
 
 @implementation ProfileViewController
 
+- (IBAction)pressedBack:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.backBtn setTitle:@"" forState:UIControlStateNormal];
     // Do any additional setup after loading the view.
 }
 
