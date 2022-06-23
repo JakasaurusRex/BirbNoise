@@ -13,6 +13,7 @@
 #import "ComposeViewController.h"
 
 @interface TweetDetailViewController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewHeightConstraint;
 
 @end
 
@@ -64,6 +65,17 @@
         rect.size.height = 0;
         rect.size.height = 0;
         self.mediaView.frame = rect;
+        
+        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint
+                                                        constraintWithItem:self.mediaView
+                                                        attribute:NSLayoutAttributeHeight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                        attribute:NSLayoutAttributeHeight
+                                                        multiplier:1.0
+                                                        constant:0];
+        self.imageViewHeightConstraint = heightConstraint;
+        NSLog(@"%@", heightConstraint);
     } else {
         NSString *URLString = self.tweet.mediaURL;
         NSURL *url = [NSURL URLWithString:URLString];
@@ -73,6 +85,7 @@
         self.mediaView.clipsToBounds = true;
         self.mediaView.layer.borderWidth = 0.05;
         self.mediaView.layer.masksToBounds = true;
+        
     }
     // Do any additional setup after loading the view.
     

@@ -160,8 +160,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nXF-Qu-F1Z">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nXF-Qu-F1Z">
+                                <rect key="frame" x="0.0" y="52" width="375" height="615"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -353,19 +353,34 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ugE-Ul-H9I" firstAttribute="bottom" secondItem="nXF-Qu-F1Z" secondAttribute="bottom" id="4I3-Iq-spG"/>
-                            <constraint firstItem="ugE-Ul-H9I" firstAttribute="top" secondItem="nXF-Qu-F1Z" secondAttribute="top" constant="44" id="BvK-9g-nC5"/>
+                            <constraint firstItem="ugE-Ul-H9I" firstAttribute="top" secondItem="nXF-Qu-F1Z" secondAttribute="top" id="BvK-9g-nC5"/>
                             <constraint firstItem="ugE-Ul-H9I" firstAttribute="trailing" secondItem="nXF-Qu-F1Z" secondAttribute="trailing" id="NjU-Ai-YUz"/>
                             <constraint firstItem="nXF-Qu-F1Z" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="qo0-i6-5df"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="MOc-fV-EZE" userLabel="Timeline">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="7Mh-R7-bXZ">
-                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="woR-cf-Xd7">
-                                <rect key="frame" x="116" y="9.5" width="25" height="25"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="SKM-SF-t8b">
+                            <view key="customView" contentMode="scaleToFill" id="Nqp-za-mxp">
+                                <rect key="frame" x="16" y="5.5" width="83" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain"/>
-                            </button>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qxq-01-Wec">
+                                        <rect key="frame" x="0.0" y="-2" width="25" height="25"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="59p-ts-eEp">
+                                        <rect key="frame" x="0.0" y="-7" width="35" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" buttonSize="medium"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Qxq-01-Wec" firstAttribute="trailing" secondItem="59p-ts-eEp" secondAttribute="trailing" id="1tO-Tt-krQ"/>
+                                    <constraint firstItem="Qxq-01-Wec" firstAttribute="bottom" secondItem="59p-ts-eEp" secondAttribute="bottom" id="KMu-c0-5Ly"/>
+                                    <constraint firstItem="Qxq-01-Wec" firstAttribute="leading" secondItem="59p-ts-eEp" secondAttribute="leading" id="kYi-Eb-AxP"/>
+                                    <constraint firstItem="Qxq-01-Wec" firstAttribute="top" secondItem="59p-ts-eEp" secondAttribute="top" id="q39-dc-cVA"/>
+                                </constraints>
+                            </view>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="k9N-as-lwX">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
@@ -381,7 +396,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="barPFP" destination="woR-cf-Xd7" id="lOV-FE-Oe6"/>
+                        <outlet property="barPFP" destination="59p-ts-eEp" id="OD9-Kr-z6j"/>
+                        <outlet property="navImage" destination="Qxq-01-Wec" id="jHa-0V-xt9"/>
                         <outlet property="tableView" destination="nXF-Qu-F1Z" id="PAD-7b-qYg"/>
                     </connections>
                 </viewController>
@@ -584,6 +600,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="6e0-Lw-wG2" id="c2H-Pf-Nh2"/>
+                        <outlet property="imageViewHeightConstraint" destination="43G-12-hPX" id="qVH-EG-TVI"/>
                         <outlet property="likeBtn" destination="5sI-Mi-9rg" id="9q2-Ba-ehF"/>
                         <outlet property="likeIcon" destination="spg-nV-bUy" id="tVc-82-Puu"/>
                         <outlet property="mediaView" destination="EPm-we-xeU" id="htY-fV-VO0"/>
@@ -621,12 +638,6 @@
                         <segue destination="Lbl-k5-U4i" kind="relationship" relationship="rootViewController" id="1DH-bv-mXM"/>
                     </connections>
                 </navigationController>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Feg-7W-gCl">
-                    <rect key="frame" x="0.0" y="0.0" width="67" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                </button>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHS-35-jFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="932" y="768"/>

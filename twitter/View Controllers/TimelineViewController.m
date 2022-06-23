@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -58,13 +59,13 @@
             NSURL *url = [NSURL URLWithString:URLString];
             
             NSData *urlData = [NSData dataWithContentsOfURL:url];
-            [self.barPFP setImage:[UIImage imageWithData:urlData] forState:UIControlStateNormal];
+            self.navImage.image = [UIImage imageWithData:urlData];
             [self.barPFP setTitle:@"" forState:UIControlStateNormal];
-//            self.barPFP.layer.masksToBounds = false;
-//            self.barPFP.layer.cornerRadius = self.barPFP.bounds.size.width/2;
-            self.barPFP.clipsToBounds = true;
-            //self.barPFP.contentMode = UIViewContentModeScaleAspectFit;
-//            self.barPFP.layer.borderWidth = 0.05;
+            self.navImage.layer.masksToBounds = false;
+            self.navImage.layer.cornerRadius = self.navImage.bounds.size.width/2;
+            self.navImage.clipsToBounds = true;
+            self.navImage.contentMode = UIViewContentModeScaleAspectFill;
+            self.navImage.layer.borderWidth = 0.05;
         } else {
             NSLog(@"😫😫😫 Error getting user information: %@", error.localizedDescription);
         }

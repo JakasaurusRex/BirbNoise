@@ -10,6 +10,7 @@
 
 @interface TimelineViewController : UIViewController 
 @property (weak, nonatomic) IBOutlet UIButton *barPFP;
+@property (weak, nonatomic) IBOutlet UIImageView *navImage;
 
 
 @end
