@@ -22,6 +22,7 @@
 		845867182862268500D6ACB4 /* TweetViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845867172862268500D6ACB4 /* TweetViewCell.m */; };
 		8458672428638AF300D6ACB4 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458672328638AF300D6ACB4 /* ComposeViewController.m */; };
 		8458672728639CB800D6ACB4 /* TweetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458672628639CB800D6ACB4 /* TweetDetailViewController.m */; };
+		8458672A2865216000D6ACB4 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845867292865216000D6ACB4 /* ProfileViewController.m */; };
 		8467C59028611D2C009CDBE6 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8467C58F28611D2C009CDBE6 /* Keys.plist */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,8 @@
 		8458672328638AF300D6ACB4 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		8458672528639CB800D6ACB4 /* TweetDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetDetailViewController.h; sourceTree = "<group>"; };
 		8458672628639CB800D6ACB4 /* TweetDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetDetailViewController.m; sourceTree = "<group>"; };
+		845867282865216000D6ACB4 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		845867292865216000D6ACB4 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		8467C58F28611D2C009CDBE6 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +160,8 @@
 				8458672328638AF300D6ACB4 /* ComposeViewController.m */,
 				8458672528639CB800D6ACB4 /* TweetDetailViewController.h */,
 				8458672628639CB800D6ACB4 /* TweetDetailViewController.m */,
+				845867282865216000D6ACB4 /* ProfileViewController.h */,
+				845867292865216000D6ACB4 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
 				8458672728639CB800D6ACB4 /* TweetDetailViewController.m in Sources */,
 				845867182862268500D6ACB4 /* TweetViewCell.m in Sources */,
+				8458672A2865216000D6ACB4 /* ProfileViewController.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

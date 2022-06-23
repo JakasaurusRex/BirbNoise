@@ -76,6 +76,9 @@
     [self.tableView reloadData];
     
 }
+- (IBAction)profileButton:(id)sender {
+    NSLog(@"HI I AM BEING PRESSED");
+}
 /* will move to profile view controller when done
 //Logout method
 - (IBAction)didTapLogout:(id)sender {
