@@ -75,7 +75,6 @@
     }];
     
     
-    
     [self.tableView reloadData];
     
 }
@@ -188,18 +187,37 @@
 //refresh control method
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
 
-        // Create NSURL and NSURLRequest
-        [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
-            if (tweets) {
-                NSLog(@"😎😎😎 Successfully loaded home timeline");
-                self.arrayOfTweets = tweets;
-                [self.tableView reloadData];
-                [refreshControl endRefreshing];
-            } else {
-                NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
-                [refreshControl endRefreshing];
-            }
-        }];
+    // Create NSURL and NSURLRequest
+    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            self.arrayOfTweets = tweets;
+            [self.tableView reloadData];
+            [refreshControl endRefreshing];
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+            [refreshControl endRefreshing];
+        }
+    }];
+    [[APIManager shared] getSelfProfile:^(NSDictionary *user, NSError *error) {
+        if(user) {
+            NSLog(@"😎😎😎 Successfully loaded user info");
+            self.appUserProfile = user;
+            NSString *URLString = [self.appUserProfile[@"profile_image_url_https"] stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+            NSURL *url = [NSURL URLWithString:URLString];
+            
+            NSData *urlData = [NSData dataWithContentsOfURL:url];
+            self.navImage.image = [UIImage imageWithData:urlData];
+            
+            self.navImage.layer.masksToBounds = false;
+            self.navImage.layer.cornerRadius = self.navImage.bounds.size.width/2;
+            self.navImage.clipsToBounds = true;
+            self.navImage.contentMode = UIViewContentModeScaleAspectFill;
+            self.navImage.layer.borderWidth = 0.05;
+        } else {
+            NSLog(@"😫😫😫 Error getting user information: %@", error.localizedDescription);
+        }
+    }];
 
 }
 
@@ -209,6 +227,7 @@
     self.arrayOfTweets = tweetList;
     [self.tableView reloadData];
 }
+
 /*
 //Infinite Scroll
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
