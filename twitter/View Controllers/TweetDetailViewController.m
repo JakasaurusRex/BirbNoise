@@ -65,30 +65,24 @@
     [self.profileBtn setTitle:@"" forState:UIControlStateNormal];
     
     if(self.tweet.mediaURL ==  nil) {
-        CGRect rect = self.mediaView.frame;
-        rect.size.height = 0;
-        rect.size.height = 0;
-        self.mediaView.frame = rect;
         
-        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint
-                                                        constraintWithItem:self.mediaView
-                                                        attribute:NSLayoutAttributeHeight
-                                                        relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                        attribute:NSLayoutAttributeHeight
-                                                        multiplier:1.0
-                                                        constant:0];
-        self.imageViewHeightConstraint = heightConstraint;
-        NSLog(@"%@", heightConstraint);
     } else {
         NSString *URLString = self.tweet.mediaURL;
         NSURL *url = [NSURL URLWithString:URLString];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
-        self.mediaView.image = [UIImage imageWithData:urlData];
-        self.mediaView.layer.cornerRadius = self.mediaView.frame.size.width/12;
-        self.mediaView.clipsToBounds = true;
-        self.mediaView.layer.borderWidth = 0.05;
-        self.mediaView.layer.masksToBounds = true;
+        UIImage *image = [UIImage imageWithData:urlData];
+//        self.mediaView.image = [UIImage imageWithData:urlData];
+//        self.mediaView.layer.cornerRadius = self.mediaView.frame.size.width/12;
+//        self.mediaView.clipsToBounds = true;
+//        self.mediaView.layer.borderWidth = 0.05;
+//        self.mediaView.layer.masksToBounds = true;
+        NSTextAttachment *attacher = [[NSTextAttachment alloc] init];
+        attacher.image = image;
+        NSAttributedString *stringText = [NSAttributedString attributedStringWithAttachment:attacher];
+        NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithString:self.tweet.text];
+        [mutableString appendAttributedString:stringText];
+        
+        [self.tweetText setAttributedText:mutableString];
         
     }
     // Do any additional setup after loading the view.
