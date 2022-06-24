@@ -274,6 +274,12 @@
         Tweet *tweetToPass = self.arrayOfTweets[indexPath.item];
          User *user = tweetToPass.user;
          profileController.user = user;
+         profileController.personal = 0;
+     } else if([segue.identifier isEqualToString:@"profileSegue"]) {
+         UINavigationController *navigationController = [segue destinationViewController];
+         ProfileViewController *profileController = (ProfileViewController*)navigationController.topViewController;
+         profileController.user = [[User alloc] initWithDictionary:self.appUserProfile];
+         profileController.personal = 1;
      }
 }
 

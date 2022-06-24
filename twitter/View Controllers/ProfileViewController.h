@@ -20,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *screennameText;
 @property (weak, nonatomic) IBOutlet UIImageView *bannerPic;
 @property (weak, nonatomic) IBOutlet UILabel *followerCount;
-@property (weak, nonatomic) IBOutlet User *user;
+@property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
+@property (strong, nonatomic) User *user;
+@property (nonatomic) int personal;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,6 +11,8 @@
 #import "Tweet.h"
 #import "TweetViewCell.h"
 #import "APIManager.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
@@ -33,6 +35,10 @@
     self.screennameText.text = self.user.name;
     self.usernameText.text = [@"@" stringByAppendingString:self.user.screenName];
     self.descriptionText.text = self.user.profileDesc;
+    
+    if(!self.personal) {
+        [self.logoutBtn setTitle:@"" forState:UIControlStateNormal];
+    }
     
     
     if(self.user.followerCount > 1000000) {
@@ -94,6 +100,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.arrayOfTweets count];
+}
+
+- (IBAction)logoutBtn:(id)sender {
+    // TimelineViewController.m
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    //Clears access tokens
+    [[APIManager shared] logout];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
