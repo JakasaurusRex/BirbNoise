@@ -278,6 +278,11 @@
          UINavigationController *navCon = [segue destinationViewController];
          TweetDetailViewController *detailVC = (TweetDetailViewController *)navCon.topViewController;
          detailVC.tweet = dataToPass;
+         if(dataToPass.user.screenName == self.appUserProfile[@"screen_name"]) {
+             detailVC.isSelf = 1;
+         } else {
+             detailVC.isSelf = 0;
+         }
      } else if([segue.identifier isEqualToString:@"replySegue"]) {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;

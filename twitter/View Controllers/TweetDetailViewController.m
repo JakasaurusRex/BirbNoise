@@ -11,9 +11,11 @@
 #import "User.h"
 #import "APIManager.h"
 #import "ComposeViewController.h"
+#import "ProfileViewController.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *profileBtn;
 
 @end
 
@@ -59,6 +61,8 @@
     [self.retweetBtn setTitle:@"" forState:UIControlStateNormal];
     
     [self.replyBtn setTitle:@"" forState:UIControlStateNormal];
+    
+    [self.profileBtn setTitle:@"" forState:UIControlStateNormal];
     
     if(self.tweet.mediaURL ==  nil) {
         CGRect rect = self.mediaView.frame;
@@ -203,7 +207,15 @@
         composeController.reply = 1;
         composeController.tweet = dataToPass;
      }
+    if([segue.identifier isEqualToString:@"profileSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ProfileViewController *profileController = (ProfileViewController*)navigationController.topViewController;
+        User *dataToPass = self.tweet.user;
+        profileController.user = dataToPass;
+        profileController.personal = self.isSelf;
+    }
 }
+
 
 
 @end

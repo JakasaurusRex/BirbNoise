@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *verifiedCheck;
 @property (weak, nonatomic) IBOutlet UIButton *replyBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *mediaView;
-
+@property (nonatomic) int isSelf;
 @property (nonatomic, strong) Tweet *tweet;
 @end
 

@@ -909,6 +909,14 @@
                                     <constraint firstAttribute="width" constant="240" id="WUD-ga-3BA"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8GV-wv-iiX" userLabel="profileBtn">
+                                <rect key="frame" x="47" y="68" width="24" height="14"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <segue destination="vLM-MT-1Km" kind="presentation" identifier="profileSegue" modalPresentationStyle="fullScreen" id="Apq-pV-nrR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PrF-UE-3kU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -937,6 +945,7 @@
                             <constraint firstItem="6Se-fc-ENi" firstAttribute="leading" secondItem="PrF-UE-3kU" secondAttribute="leading" constant="25" id="LLn-l2-FiR"/>
                             <constraint firstItem="tMo-c3-F8o" firstAttribute="top" secondItem="PrF-UE-3kU" secondAttribute="top" constant="12" id="MfT-uo-Tx9"/>
                             <constraint firstItem="A5K-wb-wqh" firstAttribute="top" secondItem="ydU-UF-fEn" secondAttribute="bottom" constant="8" symbolic="YES" id="Nd8-Aj-cW5"/>
+                            <constraint firstItem="8GV-wv-iiX" firstAttribute="top" secondItem="JWe-Og-3Gr" secondAttribute="top" id="Q28-x0-TUz"/>
                             <constraint firstItem="PrF-UE-3kU" firstAttribute="trailing" secondItem="ydU-UF-fEn" secondAttribute="trailing" constant="31" id="Qbi-Lb-iHm"/>
                             <constraint firstItem="HuG-ph-nGv" firstAttribute="leading" secondItem="O4l-Vu-GdV" secondAttribute="trailing" constant="4" id="Qmf-aY-bgw"/>
                             <constraint firstItem="5sI-Mi-9rg" firstAttribute="leading" secondItem="spg-nV-bUy" secondAttribute="leading" id="Sev-SD-yb7"/>
@@ -948,6 +957,7 @@
                             <constraint firstItem="oVz-BN-4yW" firstAttribute="top" secondItem="ydU-UF-fEn" secondAttribute="bottom" constant="8" symbolic="YES" id="a9T-23-ObK"/>
                             <constraint firstItem="LmH-vo-Xrg" firstAttribute="top" secondItem="EPm-we-xeU" secondAttribute="bottom" constant="10" id="ak1-S4-6ha"/>
                             <constraint firstItem="6sU-Ju-KvB" firstAttribute="top" secondItem="oVz-BN-4yW" secondAttribute="top" id="bAr-nX-Ptc"/>
+                            <constraint firstItem="8GV-wv-iiX" firstAttribute="leading" secondItem="JWe-Og-3Gr" secondAttribute="leading" id="bzE-UK-2xC"/>
                             <constraint firstItem="O4l-Vu-GdV" firstAttribute="leading" secondItem="PrF-UE-3kU" secondAttribute="leading" constant="25" id="cDI-bB-j9t"/>
                             <constraint firstItem="A5K-wb-wqh" firstAttribute="leading" secondItem="PrF-UE-3kU" secondAttribute="leading" constant="68" id="ccd-gh-iIf"/>
                             <constraint firstItem="oZh-dr-cG2" firstAttribute="leading" secondItem="PrF-UE-3kU" secondAttribute="leading" constant="25" id="dhx-dG-oH4"/>
@@ -963,6 +973,8 @@
                             <constraint firstItem="5wS-Av-oCI" firstAttribute="top" secondItem="oZh-dr-cG2" secondAttribute="bottom" constant="13" id="twA-Dj-O0X"/>
                             <constraint firstItem="a6N-Lo-q1F" firstAttribute="leading" secondItem="JWe-Og-3Gr" secondAttribute="trailing" constant="13" id="vhr-3A-jl0"/>
                             <constraint firstItem="spg-nV-bUy" firstAttribute="top" secondItem="ydU-UF-fEn" secondAttribute="bottom" constant="8" symbolic="YES" id="yQk-DN-WIM"/>
+                            <constraint firstItem="8GV-wv-iiX" firstAttribute="trailing" secondItem="JWe-Og-3Gr" secondAttribute="trailing" id="yoo-0r-a1S"/>
+                            <constraint firstItem="8GV-wv-iiX" firstAttribute="bottom" secondItem="JWe-Og-3Gr" secondAttribute="bottom" id="zsh-WX-MPz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="pqo-JO-SMA">
@@ -981,6 +993,7 @@
                         <outlet property="name" destination="jd4-MB-e0G" id="1NP-HE-szN"/>
                         <outlet property="numLikes" destination="5eF-Ul-1Pv" id="GNn-nc-Jki"/>
                         <outlet property="numRetweets" destination="O4l-Vu-GdV" id="oot-zu-czz"/>
+                        <outlet property="profileBtn" destination="8GV-wv-iiX" id="Obi-9q-9AM"/>
                         <outlet property="profileIcon" destination="JWe-Og-3Gr" id="6hb-vA-51D"/>
                         <outlet property="replyBtn" destination="AXO-vg-rby" id="NLF-Ui-MQc"/>
                         <outlet property="replyIcon" destination="A5K-wb-wqh" id="15O-cs-K6o"/>
@@ -1098,8 +1111,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="enE-rO-ohY"/>
-        <segue reference="4rT-xu-bQM"/>
+        <segue reference="Apq-pV-nrR"/>
+        <segue reference="VXt-zZ-HsE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
