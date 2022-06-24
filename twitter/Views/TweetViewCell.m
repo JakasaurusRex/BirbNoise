@@ -107,8 +107,29 @@
 
 //function to update the labels depending upon the statuses of the variables
 - (void) updateLabels{
-    self.likeText.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
-    self.retweetText.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+    if(self.tweet.favoriteCount > 1000000) {
+        self.likeText.text = [NSString stringWithFormat:@"%.1fK", ((double)self.tweet.favoriteCount)/1000000];
+    } else if(self.tweet.favoriteCount > 100000) {
+        self.likeText.text = [NSString stringWithFormat:@"%.1fK", ((double)self.tweet.favoriteCount)/100000];
+    } else if(self.tweet.favoriteCount > 10000) {
+        self.likeText.text = [NSString stringWithFormat:@"%.1fK", ((double)self.tweet.favoriteCount)/10000];
+    } else if(self.tweet.favoriteCount > 1000) {
+        self.likeText.text = [NSString stringWithFormat:@"%.1fK", ((double)self.tweet.favoriteCount)/1000];
+    } else {
+        self.likeText.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+    }
+    
+    if(self.tweet.retweetCount > 1000000) {
+        self.retweetText.text = [NSString stringWithFormat:@"%.1fK", ((double)self.tweet.retweetCount)/1000000];
+    } else if(self.tweet.retweetCount > 100000) {
+        self.retweetText.text = [NSString stringWithFormat:@"%.1fK", ((double)self.tweet.retweetCount)/100000];
+    } else if(self.tweet.retweetCount > 10000) {
+        self.retweetText.text = [NSString stringWithFormat:@"%.1fk", ((double)self.tweet.retweetCount)/10000];
+    } else if(self.tweet.retweetCount > 1000) {
+        self.retweetText.text = [NSString stringWithFormat:@"%.1fk", ((double)self.tweet.retweetCount)/1000];
+    } else {
+        self.retweetText.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+    }
     
     if(self.tweet.favorited) {
         self.likeIcon.image = [UIImage imageNamed:@"favor-icon-red"];
