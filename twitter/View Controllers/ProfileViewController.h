@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *screennameText;
 @property (weak, nonatomic) IBOutlet UIImageView *bannerPic;
 @property (weak, nonatomic) IBOutlet UILabel *followerCount;
-@property (weak, nonatomic) IBOutlet NSDictionary *userDic;
+@property (weak, nonatomic) IBOutlet User *user;
 @end
 
 NS_ASSUME_NONNULL_END

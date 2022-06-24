@@ -15,6 +15,7 @@
 #import "TweetViewCell.h"
 #import "ComposeViewController.h"
 #import "TweetDetailViewController.h"
+#import "ProfileViewController.h"
 #include <math.h>
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, UIScrollViewDelegate>
@@ -264,6 +265,15 @@
         composeController.reply = 1;
         composeController.tweet = dataToPass;
         composeController.user = self.appUserProfile;
+     } else if([segue.identifier isEqualToString:@"otherProfileSegue"]) {
+         UINavigationController *navigationController = [segue destinationViewController];
+         ProfileViewController *profileController = (ProfileViewController*)navigationController.topViewController;
+         UIView *content = (UIView *)[(UIView *) sender superview];
+         TweetViewCell *cell = (TweetViewCell *)[content superview];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        Tweet *tweetToPass = self.arrayOfTweets[indexPath.item];
+         User *user = tweetToPass.user;
+         profileController.user = user;
      }
 }
 
