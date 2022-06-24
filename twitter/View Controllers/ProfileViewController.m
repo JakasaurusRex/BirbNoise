@@ -35,12 +35,12 @@
     [self.backBtn setTitle:@"" forState:UIControlStateNormal];
     self.screennameText.text = self.user.name;
     self.usernameText.text = [@"@" stringByAppendingString:self.user.screenName];
-    self.descriptionText.text = self.user.profileDesc;
     
     if(!self.personal) {
         [self.logoutBtn setTitle:@"" forState:UIControlStateNormal];
     }
     
+    [self.descriptionText setText:self.user.profileDesc];
     
     if(self.user.followerCount > 1000000) {
         self.followerCount.text = [NSString stringWithFormat:@"%.1fK", ((double)self.user.followerCount)/1000000];
