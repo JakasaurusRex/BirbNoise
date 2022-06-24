@@ -156,7 +156,7 @@
         cell.retweetText.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     }
     
-    //cell.usernameDateText.text = [@"@" stringByAppendingString:[user.screenName stringByAppendingString:[@" · " stringByAppendingString:tweet.createdAtString]]];
+    cell.usernameDateText.text = [@"@" stringByAppendingString:[self.user.screenName stringByAppendingString:[@" · " stringByAppendingString:tweet.createdAtString]]];
     
     if(!self.user.verified) {
         cell.verifiedPic.alpha = 0;

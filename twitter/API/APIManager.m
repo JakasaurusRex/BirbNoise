@@ -152,13 +152,11 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)getUserTimeline:(User *) user:(void(^)(NSArray *tweets, NSError *error))completion {
-    NSString *urlString = [NSString stringWithFormat:@"2/users/%@/tweets", user.idStr];
-    NSDictionary *parameters = @{@"media.fields":@"public_metrics"};
+    NSString *urlString = [NSString stringWithFormat:@"1.1/statuses/user_timeline.json?screen_name=%@", user.screenName];
     [self GET:urlString
-        parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionaries) {
+        parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
            // Success
-        NSArray *tweetArray = tweetDictionaries[@"data"];
-          self.tweets = [Tweet tweetsWithArray:tweetArray];
+        self.tweets = [Tweet tweetsWithArray:tweetDictionaries];
         NSLog(@"%@", tweetDictionaries);
           completion(self.tweets, nil);
        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
