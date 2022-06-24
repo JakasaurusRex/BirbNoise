@@ -17,6 +17,7 @@
 @interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segCtrl;
 @property (strong, nonatomic) NSArray *arrayOfTweets;
 @end
 
@@ -102,6 +103,30 @@
     return [self.arrayOfTweets count];
 }
 
+-(IBAction)updateTimeline:(id)sender {
+    if(self.segCtrl.selectedSegmentIndex == 0) {
+        [[APIManager shared] getUserTimeline:self.user :^(NSArray *tweets, NSError *error) {
+            if (tweets) {
+                NSLog(@"😎😎😎 Successfully loaded user timeline");
+                self.arrayOfTweets = tweets;
+                [self.tableView reloadData];
+            } else {
+                NSLog(@"😫😫😫 Error getting user timeline: %@", error.localizedDescription);
+            }
+        }];
+    } else if(self.segCtrl.selectedSegmentIndex == 2) {
+        [[APIManager shared] getFavorites:self.user :^(NSArray *tweets, NSError *error) {
+            if (tweets) {
+                NSLog(@"😎😎😎 Successfully loaded user timeline");
+                self.arrayOfTweets = tweets;
+                [self.tableView reloadData];
+            } else {
+                NSLog(@"😫😫😫 Error getting user timeline: %@", error.localizedDescription);
+            }
+        }];
+    }
+}
+
 - (IBAction)logoutBtn:(id)sender {
     // TimelineViewController.m
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -125,11 +150,11 @@
     
     //assigning the text in the cell to the information stored in the tweet
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
-    NSLog(@"%@", tweet);
+    User *user = tweet.user;
     cell.tweet = tweet;
     [cell.tweetText setText:tweet.text];
-    cell.tweetUser.text = self.user.name;
-    tweet.user = self.user;
+    cell.tweetUser.text = user.name;
+    tweet.user = user;
     
     //Better formatting for retweets and like count
     if(tweet.favoriteCount > 1000000) {
@@ -156,9 +181,9 @@
         cell.retweetText.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     }
     
-    cell.usernameDateText.text = [@"@" stringByAppendingString:[self.user.screenName stringByAppendingString:[@" · " stringByAppendingString:tweet.createdAtString]]];
+    cell.usernameDateText.text = [@"@" stringByAppendingString:[user.screenName stringByAppendingString:[@" · " stringByAppendingString:tweet.createdAtString]]];
     
-    if(!self.user.verified) {
+    if(!user.verified) {
         cell.verifiedPic.alpha = 0;
     }
     
@@ -169,7 +194,7 @@
         cell.retweetIcon.image = [UIImage imageNamed:@"retweet-icon-green"];
     }
     
-    NSString *URLString = self.user.profilePicture;
+    NSString *URLString = user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     

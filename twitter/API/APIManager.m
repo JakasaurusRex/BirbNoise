@@ -152,7 +152,21 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)getUserTimeline:(User *) user:(void(^)(NSArray *tweets, NSError *error))completion {
-    NSString *urlString = [NSString stringWithFormat:@"1.1/statuses/user_timeline.json?screen_name=%@", user.screenName];
+    NSString *urlString = [NSString stringWithFormat:@"1.1/statuses/user_timeline.json?count=200&screen_name=%@", user.screenName];
+    [self GET:urlString
+        parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+           // Success
+        self.tweets = [Tweet tweetsWithArray:tweetDictionaries];
+        NSLog(@"%@", tweetDictionaries);
+          completion(self.tweets, nil);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           // There was a problem
+           completion(nil, error);
+    }];
+}
+
+- (void)getFavorites:(User *) user:(void(^)(NSArray *tweets, NSError *error))completion {
+    NSString *urlString = [NSString stringWithFormat:@"1.1/favorites/list.json?count=200&screen_name=%@", user.screenName];
     [self GET:urlString
         parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
            // Success

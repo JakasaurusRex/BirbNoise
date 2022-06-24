@@ -471,6 +471,9 @@
                                     <segment title="Tweets &amp; replies"/>
                                     <segment title="Likes"/>
                                 </segments>
+                                <connections>
+                                    <action selector="updateTimeline:" destination="PvJ-fr-eWQ" eventType="valueChanged" id="gvU-kh-lOe"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Following" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHI-vm-83o">
                                 <rect key="frame" x="92" y="213" width="65" height="20"/>
@@ -766,6 +769,7 @@
                         <outlet property="logoutBtn" destination="hlT-os-Wn7" id="GNc-cy-rF2"/>
                         <outlet property="otherPFP" destination="mtv-nw-up5" id="LAV-bl-qUH"/>
                         <outlet property="screennameText" destination="sV0-mT-C5V" id="EjD-Pw-pWC"/>
+                        <outlet property="segCtrl" destination="tDE-bD-MBZ" id="gq0-g2-a2X"/>
                         <outlet property="segmentControl" destination="tDE-bD-MBZ" id="xT0-TG-Hyy"/>
                         <outlet property="tableView" destination="FyV-Wq-K44" id="idi-lh-cFQ"/>
                         <outlet property="usernameText" destination="vpp-XO-yIZ" id="1rf-TS-cUJ"/>

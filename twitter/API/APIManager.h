@@ -32,4 +32,6 @@
 
 - (void)getUserTimeline:(User *) user:(void(^)(NSArray *tweets, NSError *error))completion;
 
+- (void)getFavorites:(User *) user:(void(^)(NSArray *tweets, NSError *error))completion;
+
 @end
