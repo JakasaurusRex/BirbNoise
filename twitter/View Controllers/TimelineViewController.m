@@ -15,6 +15,7 @@
 #import "TweetViewCell.h"
 #import "ComposeViewController.h"
 #import "TweetDetailViewController.h"
+#include <math.h>
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -110,8 +111,32 @@
     [cell.tweetText setText:tweet.text];
     User *user = tweet.user;
     cell.tweetUser.text = user.name;
-    cell.retweetText.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
-    cell.likeText.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    
+    //Better formatting for retweets and like count
+    if(tweet.favoriteCount > 1000000) {
+        cell.likeText.text = [NSString stringWithFormat:@"%.1fK", ((double)tweet.favoriteCount)/1000000];
+    } else if(tweet.favoriteCount > 100000) {
+        cell.likeText.text = [NSString stringWithFormat:@"%.1fK", ((double)tweet.favoriteCount)/100000];
+    } else if(tweet.favoriteCount > 10000) {
+        cell.likeText.text = [NSString stringWithFormat:@"%.1fK", ((double)tweet.favoriteCount)/10000];
+    } else if(tweet.favoriteCount > 1000) {
+        cell.likeText.text = [NSString stringWithFormat:@"%.1fK", ((double)tweet.favoriteCount)/1000];
+    } else {
+        cell.likeText.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    }
+    
+    if(tweet.retweetCount > 1000000) {
+        cell.retweetText.text = [NSString stringWithFormat:@"%.1fK", ((double)tweet.retweetCount)/1000000];
+    } else if(tweet.retweetCount > 100000) {
+        cell.retweetText.text = [NSString stringWithFormat:@"%.1fK", ((double)tweet.retweetCount)/100000];
+    } else if(tweet.retweetCount > 10000) {
+        cell.retweetText.text = [NSString stringWithFormat:@"%.1fk", ((double)tweet.retweetCount)/10000];
+    } else if(tweet.retweetCount > 1000) {
+        cell.retweetText.text = [NSString stringWithFormat:@"%.1fk", ((double)tweet.retweetCount)/1000];
+    } else {
+        cell.retweetText.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    }
+    
     cell.usernameDateText.text = [@"@" stringByAppendingString:[user.screenName stringByAppendingString:[@" · " stringByAppendingString:tweet.createdAtString]]];
     
     if(!user.verified) {
