@@ -71,6 +71,8 @@
         NSURL *url = [NSURL URLWithString:URLString];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
         UIImage *image = [UIImage imageWithData:urlData];
+        
+        image = [self imageWithImage:image];
 //        self.mediaView.image = [UIImage imageWithData:urlData];
 //        self.mediaView.layer.cornerRadius = self.mediaView.frame.size.width/12;
 //        self.mediaView.clipsToBounds = true;
@@ -79,7 +81,13 @@
         NSTextAttachment *attacher = [[NSTextAttachment alloc] init];
         attacher.image = image;
         NSAttributedString *stringText = [NSAttributedString attributedStringWithAttachment:attacher];
-        NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithString:self.tweet.text];
+
+        UIFont *font = [UIFont systemFontOfSize:16.0];
+        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font
+                                        forKey:NSFontAttributeName];
+        NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithString:self.tweet.text attributes:attrsDictionary];
+        NSMutableAttributedString *mutableString2 = [[NSMutableAttributedString alloc] initWithString:@"\n" attributes:attrsDictionary];
+        [mutableString appendAttributedString:mutableString2];
         [mutableString appendAttributedString:stringText];
         
         [self.tweetText setAttributedText:mutableString];
@@ -210,6 +218,23 @@
     }
 }
 
+- (UIImage *)imageWithImage:(UIImage *)image
+{
+    CGFloat scale = MAX(250/image.size.width, 250/image.size.height);
+    CGFloat width = image.size.width * scale;
+    CGFloat height = image.size.height * scale;
+    CGRect imageRect = CGRectMake((250 - width)/2.0f,
+                                  (250 - height)/2.0f,
+                                  width,
+                                  height);
+
+    CGSize cg = CGSizeMake(250, 250);
+    UIGraphicsBeginImageContextWithOptions(cg, NO, 0);
+    [image drawInRect:imageRect];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 
 
 @end
