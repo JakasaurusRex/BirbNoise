@@ -124,6 +124,16 @@
                 NSLog(@"😫😫😫 Error getting user timeline: %@", error.localizedDescription);
             }
         }];
+    } else {
+        [[APIManager shared] getUserTimelineWithReplies:self.user :^(NSArray *tweets, NSError *error) {
+            if (tweets) {
+                NSLog(@"😎😎😎 Successfully loaded user timeline");
+                self.arrayOfTweets = tweets;
+                [self.tableView reloadData];
+            } else {
+                NSLog(@"😫😫😫 Error getting user timeline: %@", error.localizedDescription);
+            }
+        }];
     }
 }
 

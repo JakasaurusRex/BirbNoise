@@ -34,4 +34,6 @@
 
 - (void)getFavorites:(User *) user:(void(^)(NSArray *tweets, NSError *error))completion;
 
+- (void)getUserTimelineWithReplies:(User *) user:(void(^)(NSArray *tweets, NSError *error))completion;
+
 @end
