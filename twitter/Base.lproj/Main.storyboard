@@ -431,8 +431,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QN-Zm-85L">
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bouncesZoom="NO" id="5QN-Zm-85L">
                                 <rect key="frame" x="0.0" y="-6" width="375" height="673"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FyV-Wq-K44">
                                         <rect key="frame" x="0.0" y="283" width="375" height="346"/>
@@ -720,7 +721,7 @@
                                     <constraint firstItem="FyV-Wq-K44" firstAttribute="leading" secondItem="5QN-Zm-85L" secondAttribute="leading" id="Yyy-dI-eRR"/>
                                     <constraint firstItem="sB1-cj-7lT" firstAttribute="leading" secondItem="5QN-Zm-85L" secondAttribute="leading" id="ZNO-BO-shb"/>
                                     <constraint firstItem="HSm-n9-fpM" firstAttribute="trailing" secondItem="mtv-nw-up5" secondAttribute="trailing" constant="270" id="b4X-pe-AjK"/>
-                                    <constraint firstItem="i44-Mq-c6H" firstAttribute="top" secondItem="GWS-5H-LAa" secondAttribute="bottom" constant="-10" id="cJb-A5-q1t"/>
+                                    <constraint firstItem="i44-Mq-c6H" firstAttribute="top" secondItem="GWS-5H-LAa" secondAttribute="bottom" id="cJb-A5-q1t"/>
                                     <constraint firstItem="avA-0C-LDD" firstAttribute="leading" secondItem="zHI-vm-83o" secondAttribute="trailing" constant="17" id="nur-Ag-MSB"/>
                                     <constraint firstItem="GWS-5H-LAa" firstAttribute="leading" secondItem="mtv-nw-up5" secondAttribute="leading" id="pg5-vI-Tk0"/>
                                     <constraint firstAttribute="trailing" secondItem="tDE-bD-MBZ" secondAttribute="trailing" id="qzV-0h-hgw"/>
@@ -729,7 +730,7 @@
                                     <constraint firstItem="zHI-vm-83o" firstAttribute="centerY" secondItem="i44-Mq-c6H" secondAttribute="centerY" id="vUd-l3-ejd"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vpp-XO-yIZ" secondAttribute="trailing" constant="10" id="vwu-7p-ez6"/>
                                     <constraint firstItem="sB1-cj-7lT" firstAttribute="centerX" secondItem="5QN-Zm-85L" secondAttribute="centerX" id="wQI-g4-s9H"/>
-                                    <constraint firstAttribute="bottom" secondItem="FyV-Wq-K44" secondAttribute="bottom" constant="-204" id="xnV-9c-R40"/>
+                                    <constraint firstAttribute="bottom" secondItem="FyV-Wq-K44" secondAttribute="bottom" id="xnV-9c-R40"/>
                                     <constraint firstItem="tDE-bD-MBZ" firstAttribute="top" secondItem="i44-Mq-c6H" secondAttribute="bottom" constant="30" id="zKh-vH-hto"/>
                                     <constraint firstAttribute="trailing" secondItem="FyV-Wq-K44" secondAttribute="trailing" id="zLI-Rz-oql"/>
                                 </constraints>
@@ -765,7 +766,9 @@
                                 <rect key="frame" x="276" y="5" width="83" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout">
+                                    <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="logoutBtn:" destination="PvJ-fr-eWQ" eventType="touchUpInside" id="5Qj-xp-WmW"/>
                                 </connections>
