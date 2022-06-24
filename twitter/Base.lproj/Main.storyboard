@@ -396,9 +396,6 @@
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <connections>
-                                    <action selector="profileButton:" destination="Lbl-k5-U4i" id="Fpk-cm-hze"/>
-                                </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="k9N-as-lwX">

@@ -64,9 +64,8 @@
     
     [self.profileBtn setTitle:@"" forState:UIControlStateNormal];
     
-    if(self.tweet.mediaURL ==  nil) {
-        
-    } else {
+    //Adds images to details page
+    if(self.tweet.mediaURL != nil){
         NSString *URLString = self.tweet.mediaURL;
         NSURL *url = [NSURL URLWithString:URLString];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
@@ -96,14 +95,13 @@
     // Do any additional setup after loading the view.
     
 }
+
+//go back to timeline page
 - (IBAction)pressedBack:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
-- (IBAction)pressedReply:(id)sender {
-    
-}
-
+//pressed like
 - (IBAction)pressedLike:(id)sender {
     //if they were not favorited already, like the tweet
     if(self.tweet.favorited == NO) {

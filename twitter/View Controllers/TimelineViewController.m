@@ -40,7 +40,8 @@
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
-    //[self.pfpButton setTitle:@"" forState:UIControlStateNormal];
+    
+    //Buttons automatically put text on themselves for some reason, this is what i did throuhgout my code to stop that
     [self.barPFP setTitle:@"" forState:UIControlStateNormal];
     
     // Get timeline
@@ -54,6 +55,7 @@
         }
     }];
     
+    //Get the user who is using the app
     [[APIManager shared] getSelfProfile:^(NSDictionary *user, NSError *error) {
         if(user) {
             NSLog(@"😎😎😎 Successfully loaded user info");
@@ -78,23 +80,7 @@
     [self.tableView reloadData];
     
 }
-- (IBAction)profileButton:(id)sender {
-    NSLog(@"HI I AM BEING PRESSED");
-}
-/* will move to profile view controller when done
-//Logout method
-- (IBAction)didTapLogout:(id)sender {
-    // TimelineViewController.m
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
-    
-    //Clears access tokens
-    [[APIManager shared] logout];
-}
-*/
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -137,12 +123,15 @@
         cell.retweetText.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     }
     
+    //@user dot time since post format
     cell.usernameDateText.text = [@"@" stringByAppendingString:[user.screenName stringByAppendingString:[@" · " stringByAppendingString:tweet.createdAtString]]];
     
+    //if user is verified check
     if(!user.verified) {
         cell.verifiedPic.alpha = 0;
     }
     
+    //sets icons based on tweet state
     if(tweet.favorited) {
         cell.likeIcon.image = [UIImage imageNamed:@"favor-icon-red"];
     } else {
@@ -154,6 +143,7 @@
         cell.retweetIcon.image = [UIImage imageNamed:@"retweet-icon"];
     }
     
+    //pfp stuff
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
@@ -168,6 +158,7 @@
     cell.userPFP.layer.borderWidth = 0.05;
     
 
+    //BUTTONS
     [cell.likeBtn setTitle:@"" forState:UIControlStateNormal];
 
     [cell.retweetButton setTitle:@"" forState:UIControlStateNormal];
@@ -233,6 +224,8 @@
             [refreshControl endRefreshing];
         }
     }];
+    
+    //Also get user profile
     [[APIManager shared] getSelfProfile:^(NSDictionary *user, NSError *error) {
         if(user) {
             NSLog(@"😎😎😎 Successfully loaded user info");
@@ -255,6 +248,7 @@
 
 }
 
+//if the user composed a tweet, this function is called
 -(void)didTweet:(Tweet *)tweet {
     NSMutableArray *tweetList = [NSMutableArray arrayWithArray:self.arrayOfTweets];
     [tweetList insertObject:tweet atIndex:0];
@@ -262,7 +256,7 @@
     [self.tableView reloadData];
 }
 
-/*
+/* This is the infinite scroll code, i didnt really like it so i just loaded 200 tweets instead.
 //Infinite Scroll
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
      // Handle scroll behavior here
@@ -290,7 +284,9 @@
     
     [task resume];
 }*/
-//for tweets with images
+
+
+//for tweets with images (adjusts the size to 250 by 250)
 - (UIImage *)imageWithImage:(UIImage *)image
 {
     CGFloat scale = MAX(250/image.size.width, 250/image.size.height);
