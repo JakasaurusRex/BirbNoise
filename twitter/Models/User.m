@@ -27,7 +27,7 @@
         self.tweetCount = [dictionary[@"statuses_count"] intValue];
         self.joinDate = dictionary[@"created_at"];
         //initialize other props
-        
+        self.idStr = dictionary[@"id_str"];
         //to make sure profile picture is high quality
         self.profilePicture = [dictionary[@"profile_image_url_https"] stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     }

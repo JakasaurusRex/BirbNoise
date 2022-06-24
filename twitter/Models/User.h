@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int tweetCount;
 @property (nonatomic) int followerCount;
 @property (nonatomic) int followingCount;
+@property (nonatomic, strong) NSString *idStr;
 
 // TODO: Create initializer
 -(instancetype) initWithDictionary:(NSDictionary *)dictionary;

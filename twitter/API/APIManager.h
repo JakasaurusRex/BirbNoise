@@ -30,4 +30,6 @@
 
 - (void)reply:(NSString *)text:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 
+- (void)getUserTimeline:(User *) user:(void(^)(NSArray *tweets, NSError *error))completion;
+
 @end
