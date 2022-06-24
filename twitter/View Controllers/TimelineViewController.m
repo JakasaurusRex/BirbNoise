@@ -145,9 +145,13 @@
     
     if(tweet.favorited) {
         cell.likeIcon.image = [UIImage imageNamed:@"favor-icon-red"];
+    } else {
+        cell.likeIcon.image = [UIImage imageNamed:@"favor-icon"];
     }
     if(tweet.retweeted) {
         cell.retweetIcon.image = [UIImage imageNamed:@"retweet-icon-green"];
+    } else {
+        cell.retweetIcon.image = [UIImage imageNamed:@"retweet-icon"];
     }
     
     NSString *URLString = tweet.user.profilePicture;
