@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *mediaView;
 @property (nonatomic) int isSelf;
 @property (nonatomic, strong) Tweet *tweet;
+@property (nonatomic, strong) NSDictionary *appUser;
 @end
 
 NS_ASSUME_NONNULL_END

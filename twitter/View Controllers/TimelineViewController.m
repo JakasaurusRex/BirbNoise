@@ -283,6 +283,7 @@
          } else {
              detailVC.isSelf = 0;
          }
+         detailVC.appUser = self.appUserProfile;
      } else if([segue.identifier isEqualToString:@"replySegue"]) {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;

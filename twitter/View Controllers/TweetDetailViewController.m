@@ -208,6 +208,7 @@
         Tweet *dataToPass = self.tweet;
         composeController.reply = 1;
         composeController.tweet = dataToPass;
+        composeController.user = self.appUser;
      }
     if([segue.identifier isEqualToString:@"profileSegue"]) {
         UINavigationController *navigationController = [segue destinationViewController];
