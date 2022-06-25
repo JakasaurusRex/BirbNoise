@@ -40,7 +40,7 @@
     self.userImage.layer.borderWidth = 0.05;
 }
 
-//When user tweets
+//When user tweets also checks if its a reply or a regular compose tweet
 - (IBAction)onTweet:(id)sender {
     NSLog(@"Attempting to send tweet with text %@", self.textView.text);
     if(self.reply == 0) {
@@ -68,6 +68,7 @@
     
 }
 
+//checking if the text is at the max and fills progress bar
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     // Set the max character limit
     int characterLimit = 140;
@@ -90,6 +91,7 @@
     NSLog(@"Tweet canceled");
 }
 
+//sets the text equal to the mention if this is a reply and the user cleared the textbox
 - (void) textViewDidBeginEditing:(UITextView *) textView {
     if(self.reply == 0) {
         [textView setText:@""];

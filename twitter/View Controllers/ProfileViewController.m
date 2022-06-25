@@ -23,6 +23,7 @@
 
 @implementation ProfileViewController
 
+//go back to whatever screen you came from
 - (IBAction)pressedBack:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
@@ -36,12 +37,14 @@
     self.screennameText.text = self.user.name;
     self.usernameText.text = [@"@" stringByAppendingString:self.user.screenName];
     
+    //I created a personal variable to check if this was the app users profile in which it would display the logout button
     if(!self.personal) {
         [self.logoutBtn setTitle:@"" forState:UIControlStateNormal];
     }
     
     [self.descriptionText setText:self.user.profileDesc];
     
+    //formatting for following and following count
     if(self.user.followerCount > 1000000) {
         self.followerCount.text = [NSString stringWithFormat:@"%.1fK", ((double)self.user.followerCount)/1000000];
     } else if(self.user.followerCount > 100000) {
@@ -66,6 +69,7 @@
         self.followingCount.text = [NSString stringWithFormat:@"%d", self.user.followingCount];
     }
     
+    //pfp and banenr setup
     NSString *URLString = self.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
@@ -88,6 +92,7 @@
     self.bannerPic.image = nil;
     self.bannerPic.image = [UIImage imageWithData:urlData2];
     
+    //get the timeline of whoeveres page we were on
     [[APIManager shared] getUserTimeline:self.user :^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded user timeline");
@@ -103,6 +108,7 @@
     return [self.arrayOfTweets count];
 }
 
+//update timeline depending upon the state of the segment control
 -(IBAction)updateTimeline:(id)sender {
     if(self.segCtrl.selectedSegmentIndex == 0) {
         [[APIManager shared] getUserTimeline:self.user :^(NSArray *tweets, NSError *error) {
@@ -137,16 +143,19 @@
     }
 }
 
+//logout button functionality if the app user is the one on the page
 - (IBAction)logoutBtn:(id)sender {
     // TimelineViewController.m
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if(self.personal == 1) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
-    
-    //Clears access tokens
-    [[APIManager shared] logout];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        appDelegate.window.rootViewController = loginViewController;
+        
+        //Clears access tokens
+        [[APIManager shared] logout];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -154,6 +163,7 @@
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
+//table view for timeline setup (same as the main screen)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 // If there are no cells available for reuse, it will always return a cell so long as the identifier has previously been registered
     TweetViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
@@ -226,6 +236,7 @@
     [cell.pfpBtn setTitle:@"" forState:UIControlStateNormal];
     return cell;
 }
+
 /*
 #pragma mark - Navigation
 

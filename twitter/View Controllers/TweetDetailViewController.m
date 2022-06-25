@@ -195,6 +195,24 @@
     }
 }
 
+//Formatting image in details page
+- (UIImage *)imageWithImage:(UIImage *)image
+{
+    CGFloat scale = MAX(250/image.size.width, 250/image.size.height);
+    CGFloat width = image.size.width * scale;
+    CGFloat height = image.size.height * scale;
+    CGRect imageRect = CGRectMake((250 - width)/2.0f,
+                                  (250 - height)/2.0f,
+                                  width,
+                                  height);
+
+    CGSize cg = CGSizeMake(250, 250);
+    UIGraphicsBeginImageContextWithOptions(cg, NO, 0);
+    [image drawInRect:imageRect];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 
 #pragma mark - Navigation
 
@@ -217,23 +235,7 @@
     }
 }
 
-- (UIImage *)imageWithImage:(UIImage *)image
-{
-    CGFloat scale = MAX(250/image.size.width, 250/image.size.height);
-    CGFloat width = image.size.width * scale;
-    CGFloat height = image.size.height * scale;
-    CGRect imageRect = CGRectMake((250 - width)/2.0f,
-                                  (250 - height)/2.0f,
-                                  width,
-                                  height);
 
-    CGSize cg = CGSizeMake(250, 250);
-    UIGraphicsBeginImageContextWithOptions(cg, NO, 0);
-    [image drawInRect:imageRect];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
-}
 
 
 @end
